@@ -32,13 +32,222 @@ output:
         in_header: header.tex
 ---
 
-# Inleiding
+# Inleiding {.unnumbered}
 
 In het kader van de enveloppe-opdracht van ANB, i.v.m. actie 26 van het Vlaams Natura 2000 Programma, werd de input gevraagd van INBO-wetenschappers aangaande vragen omtrent milieudrukken in Vlaanderen. Het betreft vragen waarvan de antwoorden van dienst zullen zijn voor het natuurbeleid om milieudrukken te kunnen rangschikken volgens de mate waarin het **opstarten van een programmatische aanpak zinvol is**.
 
 Dit verslag geeft aan welke input de experten individueel hebben gegeven in [deze googlesheet](https://docs.google.com/spreadsheets/d/1CrDuq3ZX0uhh1qPGintIlpb6xlyeNTktPcsXTfBRMkI). Dit document dient als ondersteuning voor een gezamenlijke 'merge' in een eindtabel voor ANB.
 
 Behalve de tekstuele antwoorden per vraag en per milieudruk, van de verschillende betrokken experten, worden ook hun scores (0-3) weergegeven. Meer info over de opdracht aan de experten is te vinden in de googlesheet.
+
+# Data assembleren en algemene screening {.unnumbered}
+
+```{r setup, message=FALSE, echo=FALSE}
+options(stringsAsFactors = FALSE)
+library(tidyverse)
+library(stringr)
+library(knitr)
+library(googlesheets)
+library(pander)
+library(kableExtra)
+uitvoer <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+opts_chunk$set(
+  echo = (uitvoer == "html"),
+  dpi = 300
+)
+```
+
+Opbouw van de googlesheet:
+
+```{r message=FALSE}
+input_sheet <- gs_key("1CrDuq3ZX0uhh1qPGintIlpb6xlyeNTktPcsXTfBRMkI")
+tabs <- 
+    gs_ws_ls(input_sheet) %>% 
+    data.frame(Tabblad = .)
+tabs %>%  
+    kable %>% 
+    kable_styling(bootstrap_options = c("striped", "condensed"))
+# gs_browse(bevraging)
+```
+
+
+```{r include=FALSE}
+tab_colnames <- 
+    input_sheet %>% 
+        gs_read(ws = "Floris Vanderhaeghe",
+                range = cell_rows(1),
+                col_names = FALSE) %>% 
+        t %>% 
+        as.vector
+```
+
+
+```{r}
+experten <- 
+    tabs %>% 
+    filter(Tabblad != "Handleiding") %>% 
+    rename(Naam = Tabblad)
+```
+
+
+```{r}
+input_raw <- 
+    experten %>% 
+    filter(str_detect(Naam, "Dries|Cécile|Floris")) %>%
+    group_by(Naam) %>% 
+    nest(.key = Answer) %>% 
+    mutate(Answer = map(Naam, 
+                        function(i) {
+                            expertdf <- 
+                                input_sheet %>% 
+                                gs_read(ws = i,
+                                        skip = 2,
+                                        col_names = tab_colnames,
+                                        col_types = "ccicicicicicicici")
+                            Sys.sleep(6)
+                            return(expertdf)
+                            }
+                        ),
+           Nr_cols = map(Answer, ncol),
+           Nr_rows = map(Answer, nrow)
+           )
+```
+
+Controle op dimensies van de ingelezen experttabellen:
+
+```{r}
+input_raw %>% 
+    select(-Answer) %>% 
+    unnest %>%
+    kable %>%
+    kable_styling(bootstrap_options = c("striped", "condensed"))
+```
+
+
+```{r eval=FALSE, include=FALSE, echo=FALSE}
+# Voorbeeld van één tabel:
+input_raw %>% 
+    filter(Naam == "Dries Adriaens") %>%
+    select(Answer) %>% 
+    unnest
+```
+
+We filteren alle lege antwoorden weg, alsook de milieudrukken die reeds eerder in groep werden beoordeeld, alsook de antwoorden en scores op vraag A1 (die hebben we al).
+
+```{r}
+input_raw_filtered <- 
+    input_raw %>% 
+    select(-Nr_cols, -Nr_rows) %>% 
+    unnest %>% 
+    gather(key = "Onderwerp", value = "Waarde", 3:18) %>% 
+    filter(!is.na(Waarde),
+           !str_detect(Milieudruk,
+                       "15|(3\\.(1|4).+stikstof)|(3\\.(2|3).+fosfor)|61|102|66"
+                       ),
+           !str_detect(Onderwerp, "A1")
+           )
+```
+
+Dit geeft een totaal van `r nrow(input_raw_filtered)` nieuwe scores (antwoorden + scores).
+
+```{r eval=FALSE, include=FALSE, echo=FALSE}
+# controle van de omvang van input:
+input_raw_filtered %>% 
+    count(Naam) %>% 
+    arrange(desc(n))
+```
+
+
+Het vervolg hieronder wordt automatisch gegenereerd uit deze resultaten.
+
+```{r results="asis"}
+input_rearranged <- 
+    input_raw_filtered %>% 
+    mutate(Vraag = str_extract(Onderwerp, "\\w+"),
+           Antwoordtype = ifelse(
+               str_detect(Onderwerp, ":S"),
+               "Score",
+               "Tekst"
+               )) %>%
+    select(-Onderwerp) %>% 
+    spread(key = Antwoordtype,
+           value = Waarde,
+           fill = "") %>% 
+    mutate(Tekst = if (uitvoer == "html") {
+                        str_replace_all(Tekst, "\\n", "<br>")
+                    } else {
+                        str_replace_all(Tekst, "\\n", "\\linebreak")
+                    }
+        ) %>% 
+    mutate(Score = as.integer(Score)) %>% 
+    mutate_at(c("Naam", "Milieudruk", "Vraag"), as.factor) %>% 
+    group_by(Vraag) %>% 
+    nest(.key = Data) %>% 
+    mutate(output = map2(Vraag, Data, 
+                       function(vraaglabel, data) {
+                           
+                           knitr::knit_expand("10b_child_doc.Rmd") %>% 
+                               unlist
+                       
+                        }
+                       ))
+
+output.knit <- knitr::knit_child(text = unlist(input_rearranged$output), quiet = TRUE)
+
+cat(output.knit)
+                           
+                           # cat("# Vraag ", as.character(vraaglabel), "\n\n")
+                           
+                           # data %>% 
+                           #     ggplot(aes(x = Score)) +
+                           #     geom_histogram() +
+                           #     facet_wrap(~Milieudruk) %>% 
+                           #     print
+                           # 
+                           # cat("\n\n")
+                           
+                           # data %>% 
+                           #     arrange(Milieudruk, Naam, Score, Tekst) %>% 
+                           #     select(Milieudruk, Naam, Score, Tekst) %>% 
+                           #     # pandoc.table(split.tables = Inf,
+                           #                  # justify = "left")
+                           #     kable %>%
+                           #     kable_styling(bootstrap_options = c("striped", "condensed")) %>% 
+                           #     collapse_rows(columns = 1, valign = "top")
+                           # 
+                           # cat("\n\n")
+                           
+                           # return(0)
+                           
+                      
+```
+
+<!-- `r paste(knit(text = unlist(input_rearranged$output)), collapse = '\n')` -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

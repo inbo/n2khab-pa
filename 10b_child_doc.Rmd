@@ -1,0 +1,14 @@
+# Vraag {{vraaglabel}}
+
+```{r results='asis'}
+{{data}} %>% 
+    arrange(Milieudruk, Naam, Score, Tekst) %>%
+    select(Milieudruk, Naam, Score, Tekst) %>%
+    # pandoc.table(split.tables = Inf,
+                 # justify = "left")
+    kable %>%
+    kable_styling(bootstrap_options = c("striped", "condensed")) %>%
+    collapse_rows(columns = 1, valign = "top")
+```
+
+
