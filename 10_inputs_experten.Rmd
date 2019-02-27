@@ -49,7 +49,6 @@ library(stringr)
 library(knitr)
 library(googlesheets)
 library(pander)
-library(kableExtra)
 uitvoer <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 opts_chunk$set(
   echo = (uitvoer == "html"),
@@ -65,8 +64,7 @@ tabs <-
     gs_ws_ls(input_sheet) %>% 
     data.frame(Tabblad = .)
 tabs %>%  
-    kable %>% 
-    kable_styling(bootstrap_options = c("striped", "condensed"))
+    kable
 # gs_browse(bevraging)
 ```
 
@@ -93,7 +91,7 @@ experten <-
 ```{r}
 input_raw <- 
     experten %>% 
-    filter(str_detect(Naam, "Dries|Cécile|Floris")) %>%
+    # filter(str_detect(Naam, "Dries|Cécile|Floris")) %>%
     group_by(Naam) %>% 
     nest(.key = Answer) %>% 
     mutate(Answer = map(Naam, 
@@ -119,8 +117,7 @@ Controle op dimensies van de ingelezen experttabellen:
 input_raw %>% 
     select(-Answer) %>% 
     unnest %>%
-    kable %>%
-    kable_styling(bootstrap_options = c("striped", "condensed"))
+    kable
 ```
 
 
@@ -160,7 +157,7 @@ input_raw_filtered %>%
 
 Het vervolg hieronder wordt automatisch gegenereerd uit deze resultaten.
 
-```{r results="asis"}
+```{r message = FALSE, warning = FALSE, results="asis"}
 input_rearranged <- 
     input_raw_filtered %>% 
     mutate(Vraag = str_extract(Onderwerp, "\\w+"),
@@ -183,47 +180,39 @@ input_rearranged <-
     mutate_at(c("Naam", "Milieudruk", "Vraag"), as.factor) %>% 
     group_by(Vraag) %>% 
     nest(.key = Data) %>% 
-    mutate(output = map2(Vraag, Data, 
+    mutate(Grafiek = map2(Vraag, Data, 
                        function(vraaglabel, data) {
                            
-                           knitr::knit_expand("10b_child_doc.Rmd") %>% 
-                               unlist
-                       
-                        }
-                       ))
+                           cat("# Vraag ", as.character(vraaglabel), "\n\n")
+                           
+                           grafiek <- 
+                               data %>%
+                               ggplot(aes(x = as.factor(Score))) +
+                               geom_histogram(stat = "count") +
+                               facet_wrap(~Milieudruk) +
+                               labs(title = as.character(vraaglabel)) +
+                               theme(strip.text = element_text(hjust = 0))
 
-output.knit <- knitr::knit_child(text = unlist(input_rearranged$output), quiet = TRUE)
-
-cat(output.knit)
+                           data %>%
+                               arrange(Milieudruk, Score, Tekst, Naam) %>%
+                               select(Milieudruk, Score, Tekst, Naam) %>%
+                               pandoc.table(split.tables = Inf,
+                                            justify = "left")
                            
-                           # cat("# Vraag ", as.character(vraaglabel), "\n\n")
+                           cat("\n\n")
                            
-                           # data %>% 
-                           #     ggplot(aes(x = Score)) +
-                           #     geom_histogram() +
-                           #     facet_wrap(~Milieudruk) %>% 
-                           #     print
-                           # 
-                           # cat("\n\n")
-                           
-                           # data %>% 
-                           #     arrange(Milieudruk, Naam, Score, Tekst) %>% 
-                           #     select(Milieudruk, Naam, Score, Tekst) %>% 
-                           #     # pandoc.table(split.tables = Inf,
-                           #                  # justify = "left")
-                           #     kable %>%
-                           #     kable_styling(bootstrap_options = c("striped", "condensed")) %>% 
-                           #     collapse_rows(columns = 1, valign = "top")
-                           # 
-                           # cat("\n\n")
-                           
-                           # return(0)
-                           
-                      
+                           return(grafiek)
+                       }
+                               )
+    )
 ```
 
-<!-- `r paste(knit(text = unlist(input_rearranged$output)), collapse = '\n')` -->
 
+# Histogrammen
+
+```{r message=FALSE, warning=FALSE}
+input_rearranged$Grafiek
+```
 
 
 
