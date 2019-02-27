@@ -1,0 +1,47 @@
+---
+title: "Overzicht van input experten ivm enveloppe-opdracht actie 26"
+date: '`r paste("Versie",lubridate::now())`'
+geometry: margin=1in
+lang: nl-BE
+mainfont: Calibri
+fontsize: 11pt
+documentclass: report
+link-citations: true
+linkcolor: link.colour
+citecolor: link.colour
+urlcolor: link.colour
+output:
+  html_document:
+    number_sections: yes
+    keep_md: TRUE
+    code_folding: hide
+    toc: TRUE
+    toc_float:
+      collapsed: FALSE
+      smooth_scroll: FALSE
+    includes:
+        in_header: header.html
+  pdf_document:
+    fig_caption: yes
+    keep_tex: yes
+    toc: yes
+    toc_depth: 3
+    latex_engine: xelatex
+    number_sections: true
+    includes:
+        in_header: header.tex
+---
+
+# Inleiding
+
+In het kader van de enveloppe-opdracht van ANB, i.v.m. actie 26 van het Vlaams Natura 2000 Programma, werd de input gevraagd van INBO-wetenschappers aangaande vragen omtrent milieudrukken in Vlaanderen. Het betreft vragen waarvan de antwoorden van dienst zullen zijn voor het natuurbeleid om milieudrukken te kunnen rangschikken volgens de mate waarin het **opstarten van een programmatische aanpak zinvol is**.
+
+Dit verslag geeft aan welke input de experten individueel hebben gegeven in [deze googlesheet](https://docs.google.com/spreadsheets/d/1CrDuq3ZX0uhh1qPGintIlpb6xlyeNTktPcsXTfBRMkI). Dit document dient als ondersteuning voor een gezamenlijke 'merge' in een eindtabel voor ANB.
+
+Behalve de tekstuele antwoorden per vraag en per milieudruk, van de verschillende betrokken experten, worden ook hun scores (0-3) weergegeven. Meer info over de opdracht aan de experten is te vinden in de googlesheet.
+
+
+
+
+
+
