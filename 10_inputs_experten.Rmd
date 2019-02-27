@@ -49,6 +49,7 @@ library(stringr)
 library(knitr)
 library(googlesheets)
 library(pander)
+library(kableExtra)
 uitvoer <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 opts_chunk$set(
   echo = (uitvoer == "html"),
@@ -64,7 +65,8 @@ tabs <-
     gs_ws_ls(input_sheet) %>% 
     data.frame(Tabblad = .)
 tabs %>%  
-    kable
+    kable %>% 
+    kable_styling(bootstrap_options = c("condensed"))
 # gs_browse(bevraging)
 ```
 
@@ -117,7 +119,8 @@ Controle op dimensies van de ingelezen experttabellen:
 input_raw %>% 
     select(-Answer) %>% 
     unnest %>%
-    kable
+    kable %>% 
+    kable_styling(bootstrap_options = c("condensed"))
 ```
 
 
@@ -170,14 +173,16 @@ input_rearranged <-
     spread(key = Antwoordtype,
            value = Waarde,
            fill = "") %>% 
+    mutate(Score = as.integer(Score)) %>% 
+    mutate_at(c("Naam", "Milieudruk", "Vraag"), as.factor)
+grafieken <- 
+    input_rearranged %>% 
     mutate(Tekst = if (uitvoer == "html") {
                         str_replace_all(Tekst, "\\n", "<br>")
                     } else {
                         str_replace_all(Tekst, "\\n", "\\linebreak")
                     }
         ) %>% 
-    mutate(Score = as.integer(Score)) %>% 
-    mutate_at(c("Naam", "Milieudruk", "Vraag"), as.factor) %>% 
     group_by(Vraag) %>% 
     nest(.key = Data) %>% 
     mutate(Grafiek = map2(Vraag, Data, 
@@ -208,10 +213,42 @@ input_rearranged <-
 ```
 
 
+# Gedeeltelijk mooiere tabellen
+
+```{r results="asis", eval=(uitvoer=="html"), echo=(uitvoer=="html")}
+input_rearranged %>% 
+    group_by(Vraag) %>% 
+    nest(.key = Data) %>% 
+    mutate(Richdata = map2(Vraag, Data, 
+                          function(vraaglabel, data) {
+                              cbind(
+                                  tibble(Vraag = as.character(vraaglabel)),
+                                  data
+                              )
+                          }
+    )
+    ) %>% 
+    pull(Richdata) %>% 
+    lapply(function(df) {
+        
+        tablecap <- str_c("Vraag ", unique(df$Vraag %>% as.character))
+        
+        df %>% 
+           arrange(Milieudruk, Score, Tekst, Naam) %>%
+           select(Milieudruk, Score, Tekst, Naam) %>%
+           # pandoc.table(split.tables = Inf,
+                        # justify = "left")
+           kable(caption = tablecap) %>%
+           kable_styling(bootstrap_options = c("condensed")) %>%
+           collapse_rows(columns = 1, valign = "top")
+    })
+```
+
+
 # Histogrammen
 
 ```{r message=FALSE, warning=FALSE}
-input_rearranged$Grafiek
+grafieken$Grafiek
 ```
 
 
