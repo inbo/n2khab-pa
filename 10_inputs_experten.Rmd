@@ -173,7 +173,8 @@ input_filtered_rearranged <-
 Zijn er combinaties van milieudruk en vraag waarvoor geen input beschikbaar is?
 
 ```{r message=FALSE}
-input_filtered_rearranged %>%  
+aantal_inputs <- 
+    input_filtered_rearranged %>%  
     expand(Milieudruk, Vraag) %>% 
     left_join(
         input_filtered_rearranged %>% 
@@ -181,7 +182,8 @@ input_filtered_rearranged %>%
                    value = Waarde)
         ) %>% 
     group_by(Milieudruk, Vraag) %>% 
-    summarise(Aantal_inputs = sum(!is.na(Tekst) | !is.na(Score))) %>% 
+    summarise(Aantal_inputs = sum(!is.na(Tekst) | !is.na(Score)))
+aantal_inputs %>% 
     filter(Aantal_inputs == 0)
 ```
 
@@ -201,7 +203,9 @@ input_rearranged <-
                     }
         ) %>% 
     mutate(Score = as.integer(Score)) %>% 
-    mutate_at(c("Naam", "Milieudruk", "Vraag"), as.factor) %>% 
+    mutate_at(c("Naam", "Milieudruk", "Vraag"), as.factor)
+graphs <- 
+    input_rearranged %>% 
     group_by(Vraag) %>% 
     nest(.key = Data) %>% 
     mutate(Grafiek = map2(Vraag, Data, 
@@ -235,13 +239,48 @@ input_rearranged <-
 # Histogrammen
 
 ```{r message=FALSE, warning=FALSE}
-input_rearranged$Grafiek
+graphs$Grafiek
 ```
 
 
+# Input van slechts één expert
 
+Welke gevallen (milieudruk x vraag) zijn slechts door één expert beoordeeld? Dit is meer kritisch te bekijken.
 
+```{r message=FALSE, warning=FALSE, results='asis'}
+aantal_inputs %>% 
+    filter(Aantal_inputs == 1) %>% 
+    inner_join(input_rearranged) %>% 
+    select(Milieudruk, Vraag, Tekst, Score) %>% 
+    arrange() %>% 
+    pandoc.table(split.tables = Inf,
+                 justify = "left")
+```
 
+# Unanieme scores
+
+Welke scores zijn unaniem over alle experten, voor gevallen (milieudruk x vraag) waar minstens 2 experten een score gaven?
+
+```{r message=FALSE, results='asis'}
+input_rearranged_na <- 
+    input_filtered_rearranged %>% 
+    spread(key = Antwoordtype,
+           value = Waarde) %>% 
+    mutate(Score = as.integer(Score)) %>% 
+    mutate_at(c("Naam", "Milieudruk", "Vraag"), as.factor)
+input_rearranged_na %>% 
+    group_by(Milieudruk, Vraag) %>% 
+    summarise(Aantal_scores = sum(!is.na(Score))) %>% 
+    filter(Aantal_scores > 1) %>% 
+    inner_join(input_rearranged_na) %>% 
+    group_by(Milieudruk, Vraag) %>% 
+    summarise(Unaniem = (min(Score) == max(Score))) %>% 
+    filter(Unaniem) %>% 
+    inner_join(input_rearranged_na) %>% 
+    distinct(Milieudruk, Vraag, Score) %>% 
+    pandoc.table(split.tables = Inf,
+                 justify = "left")
+```
 
 
 
