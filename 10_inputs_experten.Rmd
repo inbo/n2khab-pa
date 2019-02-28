@@ -147,18 +147,19 @@ input_raw_filtered <-
 
 Dit geeft een totaal van `r nrow(input_raw_filtered)` nieuwe scores (antwoorden + scores).
 
-```{r eval=FALSE, include=FALSE, echo=FALSE}
-# controle van de omvang van input:
-input_raw_filtered %>% 
+Heeft iedereen input gegeven?
+
+```{r message=FALSE}
+experten %>% 
+    left_join(input_raw_filtered) %>% 
     count(Naam) %>% 
-    arrange(desc(n))
+    arrange(n) %>% 
+    mutate(Input_gegeven = (n > 0)) %>% 
+    kable
 ```
 
-
-Het vervolg hieronder wordt automatisch gegenereerd uit deze resultaten.
-
-```{r message = FALSE, warning = FALSE, results="asis"}
-input_rearranged <- 
+```{r}
+input_filtered_rearranged <- 
     input_raw_filtered %>% 
     mutate(Vraag = str_extract(Onderwerp, "\\w+"),
            Antwoordtype = ifelse(
@@ -166,7 +167,30 @@ input_rearranged <-
                "Score",
                "Tekst"
                )) %>%
-    select(-Onderwerp) %>% 
+    select(-Onderwerp)
+```
+
+Zijn er combinaties van milieudruk en vraag waarvoor geen input beschikbaar is?
+
+```{r message=FALSE}
+input_filtered_rearranged %>%  
+    expand(Milieudruk, Vraag) %>% 
+    left_join(
+        input_filtered_rearranged %>% 
+            spread(key = Antwoordtype,
+                   value = Waarde)
+        ) %>% 
+    group_by(Milieudruk, Vraag) %>% 
+    summarise(Aantal_inputs = sum(!is.na(Tekst) | !is.na(Score))) %>% 
+    filter(Aantal_inputs == 0)
+```
+
+
+Het vervolg hieronder wordt automatisch gegenereerd uit deze resultaten.
+
+```{r message = FALSE, warning = FALSE, results="asis"}
+input_rearranged <- 
+    input_filtered_rearranged %>% 
     spread(key = Antwoordtype,
            value = Waarde,
            fill = "") %>% 
