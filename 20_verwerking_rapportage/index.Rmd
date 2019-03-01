@@ -35,10 +35,17 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-library(knitr)
-knitr::opts_chunk$set(echo = FALSE)
+options(stringsAsFactors = FALSE)
 library(tidyverse)
-library(survey)
+library(stringr)
+library(knitr)
+library(googlesheets)
+library(pander)
+uitvoer <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+opts_chunk$set(
+  echo = FALSE,
+  dpi = 300
+)
 ```
 
 

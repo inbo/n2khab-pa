@@ -1,0 +1,36 @@
+# Verwerking tot een prioritering van milieudrukken voor een programmatische aanpak
+
+## Verkenning van de scores per milieudruk
+
+```{r message=FALSE}
+actie26_sheet <- gs_key("1iaHBHlVNh9Cw35_9DYb0WDxmVJgpOEck_wBcFWVvsfk")
+```
+
+```{r message=FALSE}
+tab_colnames <- 
+    actie26_sheet %>% 
+        gs_read(ws = "EvaluatieMilieudrukkenScores",
+                range = "A1:Y1",
+                col_names = FALSE) %>% 
+        t %>% 
+        as.vector
+actie26 <- 
+    actie26_sheet %>% 
+    gs_read(ws = "EvaluatieMilieudrukkenScores",
+            range = cell_cols(1:25),
+            skip = 2,
+            col_names = tab_colnames,
+            col_types = str_c("c", str_c(rep("cii", 8), collapse = ""))
+            )
+```
+
+
+```{r results='asis'}
+actie26 %>% 
+    select(`A2a:S`, A2a, Milieudruk) %>% 
+    arrange(`A2a:S`, A2a, Milieudruk) %>% 
+    pandoc.table(split.tables = Inf,
+                 justify = "left")
+```
+
+
