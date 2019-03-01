@@ -41,6 +41,7 @@ library(stringr)
 library(knitr)
 library(googlesheets)
 library(pander)
+library(git2rdata)
 uitvoer <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 opts_chunk$set(
   echo = FALSE,
