@@ -1,0 +1,126 @@
+..generic:
+  optimize: yes
+  NA string: NA
+  sorting:
+  - Milieudruk
+  - Vraag
+  - Antwoordtype
+  hash: 026c5daf6b60e893c4feda036fdd08fcb29846a8
+Milieudruk:
+  class: factor
+  labels:
+  - 101 Klimaatverandering in droge perioden
+  - 102 Klimaatverandering in natte perioden
+  - '103 Klimaatverandering: zeespiegelstijging'
+  - 11 Aanpassing van de fysische structuur naar een blijvende nieuwe toestand (bodemcompactie,
+    verharding, herprofilering, nieuw substraat, grondverzet, ...)
+  - 12 Toename bodemdynamiek (erosie, omwoeling, verstuiving)
+  - 13 Afname bodemdynamiek (erosie, omwoeling, verstuiving)
+  - 14 Verlies van aquatische connectiviteit
+  - 15 Verlies van terrestrische connectiviteit
+  - '3.1 Eutrofiëring via de lucht: partim stikstof'
+  - '3.2 Eutrofiëring via de bodem: partim fosfor'
+  - '3.2 Eutrofiëring via de bodem: partim stikstof'
+  - '3.3 Eutrofiëring via het grondwater: partim fosfor'
+  - '3.3 Eutrofiëring via het grondwater: partim stikstof'
+  - '3.4 Eutrofiëring via het oppervlaktewater (incl. overstromingswater en afspoeling):
+    partim fosfor'
+  - '3.4 Eutrofiëring via het oppervlaktewater (incl. overstromingswater en afspoeling):
+    partim stikstof'
+  - 4.1 Verzuring via de lucht
+  - 4.2 Verzuring via het grondwater
+  - 4.3 Verzuring via het oppervlaktewater (incl. overstromingswater)
+  - 5.1 Verdroging via het grondwater
+  - 5.2 Vernatting via het grondwater
+  - 61 Toename overstromingsduur of -frequentie (incl. getijden)
+  - 62 Afname overstromingsduur of -frequentie (incl. getijden)
+  - 63 Toename van stroomsnelheid, waterpeil en/of de fluctuatie ervan
+  - 64 Afname van stroomsnelheid, waterpeil en/of de fluctuatie ervan
+  - 65 Toename golfslagwerking
+  - 66 Afname golfslagwerking
+  - 7.1 Verzoeting via het grondwater
+  - 7.2 Verzoeting via het oppervlaktewater (incl. overstromingswater)
+  - 7.3 Verzilting via het grondwater
+  - 7.4 Verzilting via het oppervlaktewater (incl. overstromingswater)
+  - 8.1 Verontreiniging via de lucht
+  - 8.2 Verontreiniging via de bodem
+  - 8.3 Verontreiniging via het grondwater
+  - 8.4 Verontreiniging via het oppervlaktewater (incl. overstromingswater)
+  - '8.5 Thermische verontreiniging: toename temperatuur oppervlaktewater'
+  - 9.1 Geluid en trillingen
+  - 9.2 Licht en straling
+  - 9.3 Beweging en andere visuele verstoring
+  index:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  ordered: no
+Vraag:
+  class: factor
+  labels:
+  - A1
+  - A2a
+  - A2b
+  - A4
+  - B2b
+  - M1
+  - T1
+  - T4
+  index:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  ordered: no
+Antwoordtype:
+  class: factor
+  labels:
+  - Score
+  - Betrouwbaarheid
+  - Uitleg
+  index:
+  - 1
+  - 2
+  - 3
+  ordered: no
+Waarde:
+  class: character

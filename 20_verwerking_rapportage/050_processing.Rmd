@@ -2,11 +2,8 @@
 
 ## Verkenning van de scores per milieudruk
 
-```{r message=FALSE}
+```{r message=FALSE, eval=FALSE}
 actie26_sheet <- gs_key("1iaHBHlVNh9Cw35_9DYb0WDxmVJgpOEck_wBcFWVvsfk")
-```
-
-```{r message=FALSE}
 tab_colnames <- 
     actie26_sheet %>% 
         gs_read(ws = "EvaluatieMilieudrukkenScores",
@@ -14,21 +11,43 @@ tab_colnames <-
                 col_names = FALSE) %>% 
         t %>% 
         as.vector
-actie26 <- 
-    actie26_sheet %>% 
+actie26_sheet %>% 
     gs_read(ws = "EvaluatieMilieudrukkenScores",
             range = cell_cols(1:25),
             skip = 2,
             col_names = tab_colnames,
             col_types = str_c("c", str_c(rep("cii", 8), collapse = ""))
-            )
+            ) %>% 
+    gather(key = "Onderwerp", value = "Waarde", 2:25) %>% 
+    mutate(Milieudruk = factor(Milieudruk),
+           Vraag = str_extract(Onderwerp, "\\w+") %>% as.factor,
+           Antwoordtype = ifelse(
+               str_detect(Onderwerp, ":S"),
+               "Score",
+               ifelse(str_detect(Onderwerp, ":B"), 
+                      "Betrouwbaarheid",
+                      "Uitleg")
+               ) %>% 
+               factor(levels = c("Score", "Betrouwbaarheid", "Uitleg"))
+           ) %>%
+    select(Milieudruk, Vraag, Antwoordtype, Waarde) %>% 
+    write_vc("actie26", 
+             sorting = c("Milieudruk", "Vraag", "Antwoordtype"))
 ```
+
+```{r}
+actie26 <- read_vc("actie26")
+```
+
 
 
 ```{r results='asis'}
 actie26 %>% 
-    select(`A2a:S`, A2a, Milieudruk) %>% 
-    arrange(`A2a:S`, A2a, Milieudruk) %>% 
+    filter(Vraag == "A2a",
+           Antwoordtype %in% c("Score", "Uitleg")) %>% 
+    spread(key = Antwoordtype, value = Waarde) %>% 
+    select(Score, Uitleg, Milieudruk) %>% 
+    arrange(Score, Uitleg, Milieudruk) %>% 
     pandoc.table(split.tables = Inf,
                  justify = "left")
 ```
