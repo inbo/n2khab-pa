@@ -20,7 +20,7 @@ Milieudruk	Vraag	Antwoordtype	Waarde
 - Het schatten van de impact van maatregelen (modellering) is complex en kan onzekerheid met zich meebrengen"
 1	7	1	2
 1	7	2	NA
-1	7	3	NA
+1	7	3	- Temperatuur- en neerslagmetingen KMI, in een aantal meetstations verspreid over Vlaanderen - Er is veel minder informatie over de effecten op kritische procesparameters
 1	8	1	1
 1	8	2	1
 1	8	3	Er is informatie over bepaalde soorten (evolutie van ranges), maar er is veel onzekerheid. Geen grenswaarden voor neerslag, CO2 en temperatuur, wel voor bepaalde procesparameters (bv. waterstanden).
@@ -47,8 +47,7 @@ Milieudruk	Vraag	Antwoordtype	Waarde
 - Het schatten van de impact van maatregelen (modellering) is complex en kan onzekerheid met zich meebrengen"
 2	7	1	2
 2	7	2	1
-2	7	3	"- Er is veel informatie over de milieudruk (neerslag, T)
-- Er is veel minder informatie over de effecten op kritische procesparameters"
+2	7	3	- Temperatuur- en neerslagmetingen KMI, in een aantal meetstations verspreid over Vlaanderen - Er is veel minder informatie over de effecten op kritische procesparameters
 2	8	1	1
 2	8	2	1
 2	8	3	Er is informatie over bepaalde soorten (evolutie van ranges), maar er is veel onzekerheid. Geen grenswaarden voor neerslag, CO2 en temperatuur, wel voor bepaalde procesparameters (bv. waterstanden).
@@ -99,7 +98,7 @@ Veel bronnen (lokaal)"
 - de impact van de maatregelen is vrij goed in te schatten"
 4	7	1	2
 4	7	2	1
-4	7	3	Heterogeen
+4	7	3	Slechts sporadisch en verspreid gegevens beschikbaar over bodemcompactie, herprofilering, nieuw substraat en grondverzet. Verharding is via remote sensing goed in kaart gebracht.
 4	8	1	1
 4	8	2	1
 4	8	3	In beperkte mate gekend voor boshabitat, in functie van gevoeligheid voor schade door exploitatie
@@ -125,7 +124,7 @@ Veel bronnen (lokaal)"
 inschatting effecten moeilijk (uitz verstuiving)"
 5	7	1	2
 5	7	2	2
-5	7	3	Weinig. Wel voor bepaalde systemen (rivierdynamiek, zanddynamiek aan de kust)
+5	7	3	Globaal weinig. Wel voor bepaalde systemen (rivierdynamiek, zanddynamiek aan de kust)
 5	8	1	0
 5	8	2	2
 5	8	3	Nee
@@ -150,7 +149,7 @@ inschatting effecten moeilijk (uitz verstuiving)"
 - inschatting effecten moeilijk"
 6	7	1	2
 6	7	2	2
-6	7	3	Heterogeen
+6	7	3	Globaal weinig. Wel voor bepaalde systemen (rivierdynamiek, zanddynamiek aan de kust)
 6	8	1	0
 6	8	2	2
 6	8	3	Nee
@@ -346,7 +345,7 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 - Ja (kwalitatief?, modellering heel complex)"
 13	7	1	2
 13	7	2	NA
-13	7	3	verspreide informatie (peilbuizenmeetnet)
+13	7	3	grondwatermeetpunten WATINA, VMM, VLM zijn beschikbaar in geheel Vlaanderen; grondwatermodellering mogelijk is mogelijk maar modellen zijn nog niet overal beschikbaar
 13	8	1	2
 13	8	2	3
 13	8	3	Deels: referentiewaarden + work in progress.
@@ -371,7 +370,12 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 - Ja (modellering nodig)"
 14	7	1	2
 14	7	2	3
-14	7	3	NA
+14	7	3	"""Er zijn data, maar nog niet toereikend:
+- Puntmetingen oppervlaktewater
+- Landbouwbemesting (Mestbank)
+- Erosieproblematiek is onvoldoende in kaart gebracht
+- Geen zicht op impact in overstromingsgebied
+- Er bestaan gebiedsspecifieke modellen voor sedimentatie"""
 14	8	1	2
 14	8	2	2
 14	8	3	"- Er zijn normen voor de natuurkwaliteit van aquatische systemen, maar niet van terrestrische systemen en deze zijn niet eenvoudig op te stellen.
@@ -460,7 +464,7 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 - Ja (vooral kwalitatief inzicht)"
 17	7	1	2
 17	7	2	2
-17	7	3	verspreide informatie (peilbuizenmeetnet)
+17	7	3	grondwatermeetpunten WATINA, VMM, VLM zijn beschikbaar in geheel Vlaanderen; grondwatermodellering mogelijk is mogelijk maar modellen zijn nog niet overal beschikbaar
 17	8	1	1
 17	8	2	2
 17	8	3	Deels: data beschikbaar, maar work in progress.
@@ -485,7 +489,7 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 - Ja (vooral kwalitatief inzicht)"
 18	7	1	2
 18	7	2	2
-18	7	3	verspreide informatie
+18	7	3	verspreide informatie bij detailstudies in wetlands
 18	8	1	1
 18	8	2	2
 18	8	3	Deels: data beschikbaar, maar work in progress. Geen grenswaarden voor stagnerend regenwater, studies naar het proces zijn wel beschikbaar.
@@ -510,7 +514,7 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 - Ja (grondwatermodellering)"
 19	7	1	2
 19	7	2	NA
-19	7	3	NA
+19	7	3	grondwatermeetpunten WATINA, VMM, VLM zijn beschikbaar in geheel Vlaanderen; grondwatermodellering mogelijk is mogelijk maar modellen zijn nog niet overal beschikbaar
 19	8	1	2
 19	8	2	3
 19	8	3	Deels: referentiewaarden + work in progress.
@@ -535,7 +539,7 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 - Ja (grondwatermodellering)"
 20	7	1	2
 20	7	2	2
-20	7	3	zie luc
+20	7	3	grondwatermeetpunten WATINA, VMM, VLM zijn beschikbaar in geheel Vlaanderen; grondwatermodellering mogelijk is mogelijk maar modellen zijn nog niet overal beschikbaar
 20	8	1	1
 20	8	2	2
 20	8	3	Deels: referentiewaarden + work in progress. Maar niet beschikbaar voor droge types
@@ -665,7 +669,8 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 - Ja (modellen waterbouwkundig labo)"
 25	7	1	1
 25	7	2	2
-25	7	3	Fragmentarisch
+25	7	3	"Fragmentarisch?
+Checken met Wim"
 25	8	1	0
 25	8	2	1
 25	8	3	"Nee?
@@ -695,7 +700,7 @@ Checken met Wim"
 - Wellicht (lokale modellen of gebiedskennis)"
 26	7	1	0
 26	7	2	2
-26	7	3	- Informatie zo goed als onbestaande
+26	7	3	Voornamelijk relevant voor vennen en daarover is informatie zo goed als onbestaande
 26	8	1	0
 26	8	2	2
 26	8	3	Nee
@@ -746,7 +751,7 @@ Checken met Wim"
 - gedeeltelijk wel"
 28	7	1	2
 28	7	2	2
-28	7	3	schelde saliniteitsmetingen
+28	7	3	Voor de Schelde zijn saliniteitsmetingen beschikbaar.
 28	8	1	2
 28	8	2	1
 28	8	3	"referentiewaarden zijn vrij goed bekend
@@ -798,7 +803,7 @@ Checken met Wim"
 - gedeeltelijk, impact wellicht niet eenduidig te begroten"
 30	7	1	2
 30	7	2	2
-30	7	3	schelde saliniteitsmetingen
+30	7	3	Voor de Schelde zijn saliniteitsmetingen beschikbaar.
 30	8	1	2
 30	8	2	1
 30	8	3	"referentiewaarden zijn vrij goed bekend
@@ -824,7 +829,7 @@ Checken met Wim"
 - gedeeltelijk (soms complexe modellering nodig)"
 31	7	1	2
 31	7	2	NA
-31	7	3	NA
+31	7	3	VMM meetnet lucht; onvolledig
 31	8	1	0
 31	8	2	2
 31	8	3	Nauwelijks en focus op gezondheid en milieu. Voorbeelden zijn de Europese LT doelstelling voor ozon, de Europese streefwaarden voor bepaalde zware metalen
@@ -872,7 +877,7 @@ Checken met Wim"
 33	6	3	niet altijd evident; polluentafhankelijk; moeilijk met historische vervuiling
 33	7	1	1
 33	7	2	NA
-33	7	3	NA
+33	7	3	Onvoldoende gekend: te weinig specifieke metingen van polluenten in het grondwater
 33	8	1	1
 33	8	2	2
 33	8	3	Beperkt: Vlarebo bodemsaneringsnormen en streefwaarden voor bodem (bestemmingstype natuur)
@@ -897,7 +902,7 @@ Checken met Wim"
 - Impact op de milieudruk kan voor sommige stoffen eerder gering zijn (bv. hormonen in RWZI effluenten)"
 34	7	1	2
 34	7	2	1
-34	7	3	Subset van VMM meetnet waterkwaliteit oppervlaktewater; niet in afstroom
+34	7	3	Subset van VMM meetnet waterkwaliteit oppervlaktewater; niet in afstromend water (runoff)
 34	8	1	0
 34	8	2	2
 34	8	3	Nee
@@ -947,7 +952,7 @@ Checken met Wim"
 - impact inschatten moeilijk (door complexiteit van meerdere bronnen en verschillende gevoeligheid van soorten)"
 36	7	1	1
 36	7	2	NA
-36	7	3	NA
+36	7	3	Slechts voor enkele bronnen (bv. geluid langs snelwegen) maar niet gebiedsdekkend voor Vlaanderen, en ook niet voor alle bronnen. Modellering zal (te) complex zijn voor de meeste bronnen.
 36	8	1	1
 36	8	2	2
 36	8	3	Zeer beperkt. In enkele review studies geeft men drempelwaarden voor bv. zangvogels en weidevogels voor geluid van wegverkeer, of bv. verstoringsafstanden voor bronnen zoals recreatie en windturbines (combinatie met beweging), maar door de complexiteit van de bronnen en verschillende gevoeligheid van soorten, zijn vaste drempelwaarden moeilijk te bepalen. Voor vergunninghoudende activiteiten worden vaak maatregelen voorgesteld specifiek voor de betreffende locatie.
@@ -975,7 +980,8 @@ Straling:
 - te grote onzekerheden over de effecten en zo ook mogelijke milderende maatregelen."
 37	7	1	1
 37	7	2	NA
-37	7	3	NA
+37	7	3	"Er zijn nachtelijke satellietbeelden beschikbaar (maar actueel?) die globaal de staat van de lichtvervuiling kunnen weergeven. 
+Voor electromagnetische straling zijn er modellen beschikbaar om op lokaal niveau te gebruiken (opmaak doorgaans enkel i.k.v. aanvraag zendmasten) en er kunnen ook gerichte metingen worden uitgevoerd op lokaal niveau."
 37	8	1	1
 37	8	2	NA
 37	8	3	"Specifiek voor lichthinder bij bepaalde soortgroepen bestaan er wel internationale instrumenten (bv. richtlijnen EUROBATS rond lichthinder).
