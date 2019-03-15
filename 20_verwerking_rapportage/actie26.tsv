@@ -7,10 +7,13 @@ Milieudruk	Vraag	Antwoordtype	Waarde
 1	2	3	Vlaanderen tot internationaal
 1	3	1	3
 1	3	2	3
-1	3	3	Vlaanderen
+1	3	3	wijd verspreid in Vlaanderen
 1	4	1	3
 1	4	2	3
-1	4	3	NA
+1	4	3	"Complex
+- veel bronnen (ook internationaal)
+- sectoren industrie, transport, gebouwen
+- complexe, deels onbekende processen tussen bronnen en uiteindelijke milieudruk"
 1	5	1	3
 1	5	2	2
 1	5	3	Nee, er is wel een internationaal kader maar dat is nog niet geïmplementeerd in Vlaanderen
@@ -32,12 +35,13 @@ Milieudruk	Vraag	Antwoordtype	Waarde
 2	2	3	Vlaanderen tot internationaal
 2	3	1	3
 2	3	2	3
-2	3	3	Vlaanderen
+2	3	3	wijd verspreid in Vlaanderen
 2	4	1	3
 2	4	2	3
-2	4	3	"Complex:
-- veel sectoren
-- veel bronnen (ook internationaal)"
+2	4	3	"Complex
+- veel bronnen (ook internationaal)
+- sectoren industrie, transport, gebouwen
+- complexe, deels onbekende processen tussen bronnen en uiteindelijke milieudruk"
 2	5	1	3
 2	5	2	2
 2	5	3	Nee, er is wel een internationaal kader maar dat is nog niet geïmplementeerd in Vlaanderen
@@ -62,7 +66,10 @@ Milieudruk	Vraag	Antwoordtype	Waarde
 3	3	3	Kustgebied (duinen, hele polder) en Zeeschelde
 3	4	1	3
 3	4	2	NA
-3	4	3	NA
+3	4	3	"Complex
+- veel bronnen (ook internationaal)
+- sectoren industrie, transport, gebouwen
+- complexe, deels onbekende processen tussen bronnen en uiteindelijke milieudruk"
 3	5	1	3
 3	5	2	NA
 3	5	3	Nee, er is wel een internationaal kader maar dat is nog niet geïmplementeerd in Vlaanderen
@@ -87,8 +94,9 @@ Milieudruk	Vraag	Antwoordtype	Waarde
 4	3	3	wijd verspreid in Vlaanderen
 4	4	1	2
 4	4	2	2
-4	4	3	"Veel sectoren, maar per locatie eenvoudig (meestal 1 actor)
-Veel bronnen (lokaal)"
+4	4	3	"Matig complex
+- veel sectoren, maar per locatie eenvoudig (meestal 1 actor)
+- weliswaar veel bronnen (lokaal)"
 4	5	1	2
 4	5	2	NA
 4	5	3	Deels, er zijn beleidsinstrumenten (vooral natuurdecreet, habitatrichtlijn, ruimtelijke ordening en in beperktere mate bosdecreet) toegepast in vergunningenverlening en handhaving maar implementatie biedt nog onvoldoende bescherming
@@ -113,8 +121,10 @@ Veel bronnen (lokaal)"
 5	3	3	wijd verspreid in Vlaanderen
 5	4	1	2
 5	4	2	2
-5	4	3	"Veel sectoren, maar per locatie eenvoudig (meestal 1 actor)
-Veel bronnen (lokaal)"
+5	4	3	"Matig complex
+- veel ruimtegebruikers
+- veel (veelal) lokale bronnen, maar oorzaak-effect relatie per bron is vrij eenvoudig
+- druk is evenwel resultante van uiteenlopende oorzaken en omvat daarom uiteenlopende deelprocesketens"
 5	5	1	2
 5	5	2	2
 5	5	3	Deels, ze zijn nog onvoldoende afgestemd op de complexiteit van de milieudruk
@@ -136,10 +146,13 @@ inschatting effecten moeilijk (uitz verstuiving)"
 6	2	3	lokaal tot internationaal
 6	3	1	2
 6	3	2	2
-6	3	3	zie floris
+6	3	3	verspreid in Vlaanderen: kalkrijke hellingen (9150 beukenbos), duinen (kust & binnenland), Grensmaas (stroomdalgraslanden)
 6	4	1	2
 6	4	2	2
-6	4	3	NA
+6	4	3	"Matig complex
+- veel ruimtegebruikers
+- veel (veelal) lokale bronnen, maar oorzaak-effect relatie per bron is vrij eenvoudig
+- druk is evenwel resultante van uiteenlopende oorzaken en omvat daarom uiteenlopende deelprocesketens; oorzaken van de afname van de verstuiving aan de kust is onvoldoende gekend"
 6	5	1	2
 6	5	2	2
 6	5	3	Deels, ze zijn nog onvoldoende afgestemd op de complexiteit van de milieudruk
@@ -161,10 +174,12 @@ inschatting effecten moeilijk (uitz verstuiving)"
 7	2	3	lokaal tot SBZ-(deel)gebied
 7	3	1	3
 7	3	2	2
-7	3	3	NA
+7	3	3	wijd verspreid in Vlaanderen
 7	4	1	2
-7	4	2	NA
-7	4	3	NA
+7	4	2	2
+7	4	3	"Matig complex
+- meestal ligt de verantwoordelijkheid bij overheden, maar ook wateringen en landbouwsector
+- vrij veel afzonderlijke bronnen (vnl. duikers, stuwen, e.d.)"
 7	5	1	2
 7	5	2	1
 7	5	3	Deels, ze zijn nog onvoldoende afgestemd op de complexiteit van de milieudruk
@@ -186,7 +201,7 @@ inschatting effecten moeilijk (uitz verstuiving)"
 8	2	3	lokaal tot SBZ-(deel)gebied
 8	3	1	3
 8	3	2	3
-8	3	3	Vlaanderen
+8	3	3	wijd verspreid in Vlaanderen
 8	4	1	3
 8	4	2	2
 8	4	3	"Complex:
@@ -216,7 +231,7 @@ Mogelijke inspiratie qua methodiek: https://biblio.ugent.be/publication/7169040/
 9	2	3	SBZ-(deel)gebied tot internationaal
 9	3	1	3
 9	3	2	3
-9	3	3	Vlaanderen
+9	3	3	wijd verspreid in Vlaanderen
 9	4	1	3
 9	4	2	3
 9	4	3	"Complex:
@@ -274,14 +289,17 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 11	1	2	3
 11	1	3	hoog (index 0,975 / aantalklassen 3)
 11	2	1	2
-11	2	2	NA
+11	2	2	2
 11	2	3	veelal lokaal, tot SBZ-(deel)gebied wegens mobiliteit van element
 11	3	1	3
-11	3	2	NA
-11	3	3	NA
+11	3	2	2
+11	3	3	wijd verspreid in Vlaanderen
 11	4	1	2
 11	4	2	3
-11	4	3	NA
+11	4	3	"Matig complex:
+- Weinig, met name landbouw: bemesting (dierlijk / kunstmest) met effecten op bodem en grondwater
+- Vele bronnen
+- Complexe interactie met verdroging, vernatting, sulfaataanvoer via grondwater, die eutrofiëring thv de bodem veroorzaken"
 11	5	1	1
 11	5	2	2
 11	5	3	Ja, er is een adequaat instrument (MAP), maar er is verdere aanscherping en implementatie nodig
@@ -328,24 +346,26 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 13	1	2	3
 13	1	3	hoog (index 1,091 / aantalklassen 2)
 13	2	1	2
-13	2	2	NA
+13	2	2	2
 13	2	3	lokaal tot niveau grondwatersysteem
 13	3	1	3
-13	3	2	NA
-13	3	3	NA
+13	3	2	2
+13	3	3	wijd verspreid in Vlaanderen
 13	4	1	2
 13	4	2	2
-13	4	3	cf. grondwater fosfor
+13	4	3	"Matig complex:
+- Meerdere sectoren: Landbouw: bemesting (dierlijk / kunstmest) met effecten op grondwater; in mindere mate huishoudens en industrie met effecten op grondwater door infiltratie van afvoerwater
+- Vele bronnen"
 13	5	1	2
 13	5	2	2
 13	5	3	Deels,  ze zijn nog onvoldoende afgestemd op de complexiteit van de milieudruk (het gaat zowel over input van bemesting als atmosferisch)
 13	6	1	2
-13	6	2	NA
+13	6	2	2
 13	6	3	"- Ja
 - Ja (kwalitatief?, modellering heel complex)"
 13	7	1	2
-13	7	2	NA
-13	7	3	grondwatermeetpunten WATINA, VMM, VLM zijn beschikbaar in geheel Vlaanderen; grondwatermodellering mogelijk is mogelijk maar modellen zijn nog niet overal beschikbaar
+13	7	2	2
+13	7	3	grondwatermeetpunten WATINA, VMM, VLM zijn beschikbaar in geheel Vlaanderen; grondwatermodellering is mogelijk maar modellen zijn nog niet overal beschikbaar
 13	8	1	2
 13	8	2	3
 13	8	3	Deels: referentiewaarden + work in progress.
@@ -357,15 +377,17 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 14	2	3	SBZ-(deel)gebied / ecoregio / valleisysteem / oppervlaktewater
 14	3	1	3
 14	3	2	2
-14	3	3	een deel van de valleigebieden en kust (Vlaanderen) plus oppervlaktewateren en erosiegevoelige hellingen; ook andere systemen
+14	3	3	wijd verspreid in Vlaanderen; een deel van de valleigebieden en kust (Vlaanderen) plus oppervlaktewateren en erosiegevoelige hellingen; ook andere systemen
 14	4	1	3
 14	4	2	2
-14	4	3	Heel veel huishoudens, erosiebronnen
+14	4	3	"Complex:
+- sectoren: landbouw, huishoudens, industrie
+- vele bronnen, ook erosie, afspoeling"
 14	5	1	2
 14	5	2	2
 14	5	3	Deels, ze zijn nog onvoldoende afgestemd op de complexiteit van de milieudruk (vergunningverlening, MAP, riolering, erosiebestrijding, ...). Er is meer nodig om tot een duurzaam en IHD-compatibel watersysteem te komen in Vlaanderen. Er zijn instrumenten, maar de implementatie is te vrijblijvend of beperkt (de normen worden nog niet gehaald)
 14	6	1	2
-14	6	2	NA
+14	6	2	2
 14	6	3	"- Ja
 - Ja (modellering nodig)"
 14	7	1	2
@@ -419,19 +441,21 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 16	1	2	3
 16	1	3	hoog (index 0,989 / aantalklassen 2)
 16	2	1	3
-16	2	2	NA
+16	2	2	2
 16	2	3	SBZ-(deel)gebied tot internationaal
 16	3	1	3
-16	3	2	NA
-16	3	3	Vlaanderen
+16	3	2	2
+16	3	3	wijd verspreid in Vlaanderen
 16	4	1	3
 16	4	2	3
-16	4	3	NA
+16	4	3	"Complex
+- veel sectoren: verkeer, landbouw, industrie, huishoudens: zwavel is zo goed als onder controle, maar verzuring door stikstofdepositie (NH3, NH4+) blijft op veel plaatsen een probleem. Bovendien zijn de mogelijkheden voor herstel klein, door de daling in de depositie van basische kationen alsook de voorraad basische kationen in de bodem
+- heel veel puntbronnen, met een eerder diffuse werking elk op zich, maar een belangrijke cumulatieve impact"
 16	5	1	2
 16	5	2	2
 16	5	3	Deels, het PAS-instrumentarium kan hiervoor worden omgebouwd
 16	6	1	3
-16	6	2	NA
+16	6	2	2
 16	6	3	"- Ja (reductie emissies)
 - Ja (Vlaams model)"
 16	7	1	2
@@ -451,15 +475,18 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 17	2	3	lokaal tot niveau grondwatersysteem
 17	3	1	2
 17	3	2	2
-17	3	3	De weinig gebufferde delen van Vlaanderen
+17	3	3	De weinig gebufferde delen van Vlaanderen (zandig); bepaalde ecoregio's, afhankelijk van hydrologie en geochemie en landgebruik in infiltratiegebieden
 17	4	1	2
 17	4	2	2
-17	4	3	cf. 3.2 stikstof
+17	4	3	"Matig complex:
+- Weinig, met name landbouw: bemesting (dierlijk / kunstmest) met effecten op bodem en grondwater
+- Vele bronnen
+- Complexe interactie met verdroging, vernatting, sulfaataanvoer via grondwater, die eutrofiëring thv de bodem veroorzaken"
 17	5	1	2
 17	5	2	1
 17	5	3	Deels, ze zijn nog onvoldoende afgestemd op de complexiteit van de milieudruk (het gaat zowel over input van bemesting als atmosferisch)
 17	6	1	2
-17	6	2	NA
+17	6	2	2
 17	6	3	"- Ja 
 - Ja (vooral kwalitatief inzicht)"
 17	7	1	2
@@ -476,15 +503,17 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 18	2	3	lokaal
 18	3	1	1
 18	3	2	3
-18	3	3	Verspreide lokale situaties
+18	3	3	Verspreid, maar heel lokale situaties/problematiek
 18	4	1	1
 18	4	2	2
-18	4	3	zie jan wouters
+18	4	3	"Minder complex
+- matig aantal sectoren: industrie, landbouw
+- aantal puntbronnen in Vlaanderen is vermoedelijk klein"
 18	5	1	1
 18	5	2	1
 18	5	3	Ja, via instrumenten die de eutrofiëring bekampen. Actueel is deze milieudruk slechts lokaal aanwezig, waardoor combinatie van een gebiedsgerichte aanpak en regionale instrumenten vermoedelijk op een adequate wijze problemen kunnen aanpakken waar ze zich (zouden) voordoen.
 18	6	1	2
-18	6	2	NA
+18	6	2	2
 18	6	3	"- Ja 
 - Ja (vooral kwalitatief inzicht)"
 18	7	1	2
@@ -501,10 +530,12 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 19	2	3	lokaal tot niveau grondwatersysteem
 19	3	1	3
 19	3	2	3
-19	3	3	Vlaanderen
+19	3	3	wijd verspreid in Vlaanderen
 19	4	1	3
 19	4	2	3
-19	4	3	zie jan wouters + diffuus kenmerk van drainage
+19	4	3	"Complex
+- vrij veel sectoren: drinkwater, landbouw, industrie
+- zeer veel puntbronnen (grondwaterwinning van klein tot zeer groot), maar ook diffuse werking van (grootschalige) drainage"
 19	5	1	2
 19	5	2	2
 19	5	3	Deels via vergunningenkader, maar deze kan zich hierbij slechts baseren op enkele algemen bepalingen uit het natuurdecreet of de habitatrichtlijn en veel bronnen van verdroging vallen daar niet onder (kleine bemalingen, drainage, ...)
@@ -513,7 +544,7 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 19	6	3	"- Ja
 - Ja (grondwatermodellering)"
 19	7	1	2
-19	7	2	NA
+19	7	2	2
 19	7	3	grondwatermeetpunten WATINA, VMM, VLM zijn beschikbaar in geheel Vlaanderen; grondwatermodellering mogelijk is mogelijk maar modellen zijn nog niet overal beschikbaar
 19	8	1	2
 19	8	2	3
@@ -522,14 +553,17 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 20	1	2	3
 20	1	3	laag (index 0,191 / aantalklassen 0)
 20	2	1	2
-20	2	2	NA
+20	2	2	2
 20	2	3	lokaal tot niveau grondwatersysteem
 20	3	1	2
 20	3	2	2
-20	3	3	Verspreid in Vlaanderen
+20	3	3	Verspreid in Vlaamse valleigebieden (herstel natuurlijke waterstanden ikv natuurinrichting/milieubouw/bufferwerking en overstromingspreventie)
 20	4	1	1
 20	4	2	2
-20	4	3	weinig sectoren, wel meer diffuus
+20	4	3	"Weinig complex
+- weinig sectoren: vnl. milieu- en natuursector (overheid/ngo) via natuurherstel valleisystemen
+- bron is vaak terug te brengen tot enkele ingrepen (vermindering drainage/stopzetten ruimingen waterloopbedding/opstuwing, e.a.), met diffuse werking
+- interactie met verzuring via oppervlaktewater (stagnerend regenwater) en interne eutrofiëring"
 20	5	1	1
 20	5	2	2
 20	5	3	Ja, via vergunningenkader + wetgeving i.v.m. ruiming + beheerplanning
@@ -551,7 +585,7 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 21	2	3	SBZ-(deel)gebied / ecoregio / valleisysteem
 21	3	1	2
 21	3	2	3
-21	3	3	een deel van de valleigebieden en kust (Vlaanderen)
+21	3	3	een deel van de valleigebieden en kust van Vlaanderen
 21	4	1	3
 21	4	2	3
 21	4	3	"Complex:
@@ -580,11 +614,13 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 22	2	2	2
 22	2	3	SBZ-(deel)gebied / ecoregio / valleisysteem
 22	3	1	2
-22	3	2	NA
-22	3	3	NA
+22	3	2	2
+22	3	3	Bepaalde delen van Vlaamse valleigebieden, vnl. benedenloop grotere rivieren en beken
 22	4	1	3
 22	4	2	2
-22	4	3	cf toename
+22	4	3	"Complex:
+- Alle sectoren die ingrijpen in het watersysteem zodat versneld water wordt afgevoerd (o.m. door ruimtebeslag / verharding), dus alle sectoren
+- Veel bronnen: diffuse oorsprong + lokale versterking door rechttrekking / verdieping / verbreding van waterlopen"
 22	5	1	2
 22	5	2	1
 22	5	3	Deels, er is meer nodig om tot een duurzaam en IHD-compatibel watersysteem te komen in Vlaanderen. Er zijn instrumenten, maar de implementatie is te vrijblijvend of beperkt
@@ -604,16 +640,19 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 23	1	2	3
 23	1	3	laag (index 0,191 / aantalklassen 0)
 23	2	1	2
-23	2	2	NA
+23	2	2	2
 23	2	3	lokaal tot niveau oppervlaktewaterlichaam
 23	3	1	1
 23	3	2	2
 23	3	3	Estuariene systemen in Vlaanderen
 23	4	1	3
 23	4	2	2
-23	4	3	3260 complexer, estuarien iets minder
+23	4	3	"Complex
+- veel sectoren en beleidsomgevingen (landbouw, ruimtelijke ordening, water- en klimaatbeleid)
+- zeer veel potentiële bronnen, gelinkt aan verminderde infiltratie, rechttrekking van waterlopen, verharding
+- complexer voor landinwaartse stromende wateren (3260) dan voor estuaria"
 23	5	1	3
-23	5	2	NA
+23	5	2	2
 23	5	3	Bestaande instrumentarium onvoeldoende ontwikkeld in functie van natuurkwaliteit en nog onvoldoende afgestemd op de complexiteit van de milieudruk
 23	6	1	1
 23	6	2	2
@@ -635,7 +674,10 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 24	3	3	Verspreid over Vlaanderen
 24	4	1	3
 24	4	2	2
-24	4	3	3260 complexer, estuarien iets minder
+24	4	3	"Complex
+- sectoren landbouw, (huishoudelijke) drinkwatervoorziening, klimaatverandering
+- zeer veel mogelijke bronnen, met een uitgesproken cumulatieve impact + exogene oorzaken (bv. klimaatverandering)
+- complexer voor landinwaartse stromende wateren (3260) dan voor estuaria"
 24	5	1	2
 24	5	2	2
 24	5	3	Deels, heel complex door de veelheid aan sectoren en bronnen. Er is een beoordelingskader voor individuele vergunningsaanvragen, maar deze houdt onvoldoende rekening met cumulatieve effecten, waardoor het zijn doel voorbijschiet
@@ -655,13 +697,15 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 25	2	2	3
 25	2	3	zeer lokaal tot lokaal
 25	3	1	1
-25	3	2	NA
-25	3	3	NA
+25	3	2	2
+25	3	3	(vooral) Schelde-estuarium
 25	4	1	1
 25	4	2	3
-25	4	3	zie jan
+25	4	3	"Weinig complex
+- scheepvaart belangrijkste/enige sector
+- aantal bronnen is (zeer) klein"
 25	5	1	3
-25	5	2	NA
+25	5	2	2
 25	5	3	Er zijn beleidsinstrumenten (richtlijnen) maar ze zijn onvoldoende adequaat
 25	6	1	3
 25	6	2	3
@@ -706,14 +750,15 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 27	1	2	3
 27	1	3	laag (index 0,107 / aantalklassen 0)
 27	2	1	2
-27	2	2	NA
+27	2	2	2
 27	2	3	lokaal tot SBZ-(deel)gebied
 27	3	1	1
 27	3	2	3
 27	3	3	ecoregio Polders
 27	4	1	0
 27	4	2	2
-27	4	3	waterbeheer in de Polders, beperkt aantal gevallen
+27	4	3	"Eenvoudig
+- waterbeheer in de Polders (vnl ifv landbouw), beperkt aantal gevallen"
 27	5	1	3
 27	5	2	2
 27	5	3	Er zijn nauwelijks beleidsinstrumenten, ze zijn onvoldoende adequaat
@@ -731,14 +776,15 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 28	1	2	3
 28	1	3	laag (index 0,107 / aantalklassen 0)
 28	2	1	2
-28	2	2	NA
+28	2	2	2
 28	2	3	lokaal tot SBZ-(deel)gebied
 28	3	1	1
-28	3	2	NA
+28	3	2	2
 28	3	3	ecoregio Polders
 28	4	1	0
 28	4	2	2
-28	4	3	landbouw
+28	4	3	"Eenvoudig
+- waterbeheer in de Polders (vnl ifv landbouw), beperkt aantal gevallen"
 28	5	1	3
 28	5	2	2
 28	5	3	Er zijn nauwelijks beleidsinstrumenten, ze zijn onvoldoende adequaat
@@ -756,14 +802,17 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 29	1	2	3
 29	1	3	laag (index 0 / aantalklassen 0)
 29	2	1	2
-29	2	2	NA
+29	2	2	2
 29	2	3	lokaal tot SBZ-(deel)gebied
 29	3	1	1
 29	3	2	3
 29	3	3	ecoregio Polders
 29	4	1	1
 29	4	2	2
-29	4	3	landbouwdrainage, in beperkt aantal types
+29	4	3	"Weinig complex
+- eerder “passief gebeuren” (interne verzilting) zonder aanduidbare sectoren, weliswaar versterkt door klimaatverandering (toenemende zoutwaterdruk door zeespiegelstijging en eeuwenlange menselijk ingrijpen (ontginning, inklinking poldergronden) en landbouwdrainage
+- weinig sectoren: landbouw (winning zoet oppervlakte- en grondwater)
+- aantal bronnen met effectieve impact op proces van verzilting eerder beperkt"
 29	5	1	2
 29	5	2	2
 29	5	3	Deels, via vergunningsbeleid, maar houdt onvoldoende rekening met cumulatieve effecten, geen overkoepelend beleidsinstrumentarium
@@ -788,12 +837,14 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 30	3	3	ecoregio Polders
 30	4	1	1
 30	4	2	2
-30	4	3	estuarien waterbeheer
+30	4	3	"Weinig complex
+- estuarien waterbeheer (baggerwerken, ruimingen getijdengeul); voor belangrijk deel “passief gebeuren” (indringing zouttong via getijdenrivieren n.a.v. zeespiegelstijging; zie ook verzilting via grondwater)
+- aantal bronnen met effectieve impact eerder beperkt"
 30	5	1	2
 30	5	2	2
 30	5	3	Deels, via vergunningsbeleid, maar houdt onvoldoende rekening met cumulatieve effecten, geen overkoepelend beleidsinstrumentarium
 30	6	1	2
-30	6	2	NA
+30	6	2	2
 30	6	3	"- Ja
 - gedeeltelijk, impact wellicht niet eenduidig te begroten"
 30	7	1	2
@@ -810,19 +861,21 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 31	2	3	afhankelijk van stof: lokaal tot internationaal
 31	3	1	3
 31	3	2	3
-31	3	3	Vlaanderen
+31	3	3	wijd verspreid in Vlaanderen; variabel volgens stof
 31	4	1	3
 31	4	2	3
-31	4	3	NA
+31	4	3	"Complex
+- veel sectoren (vooral industrie en verkeer, maar ook huishoudens, landbouw, …)
+- aantal bronnen varieert volgens stof/sector (o.a. dioxines, PCB’s, PAK’s, zware metalen, fijn stof, elementair koolstof) van beperkt aantal (industrie bv. loodraffinaderijen, …) tot veel (verkeer, verbrandingsinstallaties, …)"
 31	5	1	2
 31	5	2	2
 31	5	3	Deels, beleidsintrumenten onvoldoende ontwikkeld in functie van natuurkwaliteit (biodiversiteit/fauna/flora). Voor veel componenten bestaat er ook nauwelijks of geen monitoring
 31	6	1	2
-31	6	2	NA
+31	6	2	2
 31	6	3	"- Ja
 - gedeeltelijk (soms complexe modellering nodig)"
 31	7	1	2
-31	7	2	NA
+31	7	2	2
 31	7	3	VMM meetnet lucht; onvolledig
 31	8	1	0
 31	8	2	2
@@ -831,14 +884,17 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 32	1	2	1
 32	1	3	laag (index 0,075 / aantalklassen 0)
 32	2	1	1
-32	2	2	NA
+32	2	2	2
 32	2	3	lokaal
 32	3	1	2
 32	3	2	2
-32	3	3	Verspreid over Vlaanderen
+32	3	3	Verspreid over Vlaanderen; hangt af van de hydrologie en geochemie van het gebied
 32	4	1	3
 32	4	2	3
-32	4	3	NA
+32	4	3	"Complex
+- weinig gekend waar verontreinigingen aanwezig zijn, maar alleszins op veel plaatsen en door uiteenlopende sectoren
+- vaak historische verontreinigingen
+- beschikbaarheid afhankelijk van fysico-chemische factoren; interactie tussen polluenten; nog ongekende polluenten"
 32	5	1	2
 32	5	2	2
 32	5	3	Deels, ze zijn nog onvoldoende afgestemd op de complexiteit van de milieudruk en niet ontwikkeld in functie van natuurkwaliteit/biodiversiteit
@@ -862,7 +918,9 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 33	3	3	Verspreid over Vlaanderen
 33	4	1	2
 33	4	2	2
-33	4	3	NA
+33	4	3	"Matig complex
+- beperkt aantal sectoren (vnl. industrie)
+- beperkt aantal bronnen, maar wel interacties mogelijk (polluenten onderling, maar ook met bodem/gesteente)"
 33	5	1	2
 33	5	2	1
 33	5	3	Deels, ze zijn nog onvoldoende afgestemd op de complexiteit van de milieudruk (bewegingen van polluenten moeilijk voorspelbaar) en niet ontwikkeld in functie van natuurkwaliteit/biodiversiteit
@@ -870,7 +928,7 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 33	6	2	2
 33	6	3	niet altijd evident; polluentafhankelijk; moeilijk met historische vervuiling
 33	7	1	1
-33	7	2	NA
+33	7	2	2
 33	7	3	Onvoldoende gekend: te weinig specifieke metingen van polluenten in het grondwater
 33	8	1	1
 33	8	2	2
@@ -879,16 +937,19 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 34	1	2	1
 34	1	3	matig (index 0,465 / aantalklassen 1)
 34	2	1	2
-34	2	2	NA
+34	2	2	2
 34	2	3	lokaal tot valleisysteem
 34	3	1	2
 34	3	2	2
 34	3	3	een deel van de valleigebieden en kust (Vlaanderen) plus oppervlaktewateren
 34	4	1	3
 34	4	2	3
-34	4	3	zie suzanna
+34	4	3	"Complex
+- sectoren: vooral industrie, landbouw, ook huishoudens
+- veel bronnen
+- complexe processen bepalen beschikbaarheid polluenten"
 34	5	1	2
-34	5	2	NA
+34	5	2	2
 34	5	3	Deels, beleidsinstrumenten (emissienormen, erosiebesluit) bestaan maar zijn niet streng genoeg
 34	6	1	2
 34	6	2	1
@@ -907,16 +968,18 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 35	2	2	2
 35	2	3	lokaal
 35	3	1	1
-35	3	2	NA
-35	3	3	NA
+35	3	2	2
+35	3	3	lokaal, enkele waterlopen stroomafwaarts energiecentralen of industrieterreinen
 35	4	1	1
 35	4	2	3
-35	4	3	NA
+35	4	3	"Weinig complex
+- vooral sector energiewinning
+- impact beperkt zich wellicht tot grotere koelinstallaties (kernreactoren, WKK’s) aangesloten op stromende wateren; minder voor KMO’s/tuin- en landbouw"
 35	5	1	1
 35	5	2	3
 35	5	3	Ja, via vergunningenbeleid
 35	6	1	3
-35	6	2	NA
+35	6	2	2
 35	6	3	"- Ja: bv. technische aanpassingen bij de bron
 - Ja: via modellering"
 35	7	1	1
@@ -936,16 +999,19 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 36	3	3	Verspreid over heel Vlaanderen, maar op bepaalde plaatsen meer dan elders (bv. industrie, wegen, steden, ..)
 36	4	1	3
 36	4	2	2
-36	4	3	NA
+36	4	3	"Complex
+- veel sectoren: vrijwel alle ruimtegebruikers, met meeste impact van industrie, wegverkeer, recreatie, vliegvaart, bewoning
+- zeer veel, lokale bronnen
+- vaak samen met visuele verstoring (licht/beweging)"
 36	5	1	2
 36	5	2	2
 36	5	3	Deels. Vergunningsplichtige activiteiten moeten wel voldoen aan bepaalde normen (bv. VLAREM). Doorgaans worden de aanbevelingen op basis van een lokale analyse (bv. MER) toegepast, steunend op beschikbare kennis en deels een expertenoordeel. Specifiek voor windturbines bestaat wel een INBO leidraad en (voor vleermuizen) beleidskader vanuit ANB.
 36	6	1	2
-36	6	2	NA
+36	6	2	2
 36	6	3	"- Ja: bv. technische aanpassingen aan bepaalde bronnen, afscherming, bepaalde afstandsregels op basis van review studies 
 - impact inschatten moeilijk (door complexiteit van meerdere bronnen en verschillende gevoeligheid van soorten)"
 36	7	1	1
-36	7	2	NA
+36	7	2	2
 36	7	3	Slechts voor enkele bronnen (bv. geluid langs snelwegen) maar niet gebiedsdekkend voor Vlaanderen, en ook niet voor alle bronnen. Modellering zal (te) complex zijn voor de meeste bronnen.
 36	8	1	1
 36	8	2	2
@@ -961,37 +1027,43 @@ Fosfaatverzadigingsconcept als basis voor al dan niet uitlogen van P uit bodems,
 37	3	3	wijd verspreid in Vlaanderen
 37	4	1	3
 37	4	2	2
-37	4	3	ook elektromagnetische straling
+37	4	3	"Complex
+- veel sectoren: vrijwel alle ruimtegebruikers, met meeste impact van industrie, wegverkeer, woongebied
+- zeer veel lokale bronnen (bv. verlichting langs wegen)
+- elektromagnetische straling: geen wetenschappelijke consensus over mogelijke effecten, maar er zijn wel indicaties"
 37	5	1	3
 37	5	2	2
 37	5	3	Neen, er wordt vooral op sensibilisering ingezet. Normen in VLAREM niet in functie van natuurkwaliteit/biodiversiteit
 37	6	1	2
-37	6	2	NA
+37	6	2	2
 37	6	3	"Lichthinder: 
 - ja: enkel verlichten waar en wanneer noodzakelijk, aanpassen van de kleur (als laatste bijkomende maatregel), ""donkertegebieden"" afbakenen
 - impact inschatten moeilijk (door complexiteit van meerdere bronnen en verschillende gevoeligheid van soorten) 
 Straling:
 - te grote onzekerheden over de effecten en zo ook mogelijke milderende maatregelen."
 37	7	1	1
-37	7	2	NA
+37	7	2	2
 37	7	3	"Er zijn nachtelijke satellietbeelden beschikbaar (maar actueel?) die globaal de staat van de lichtvervuiling kunnen weergeven. 
 Voor electromagnetische straling zijn er modellen beschikbaar om op lokaal niveau te gebruiken (opmaak doorgaans enkel i.k.v. aanvraag zendmasten) en er kunnen ook gerichte metingen worden uitgevoerd op lokaal niveau."
 37	8	1	1
-37	8	2	NA
+37	8	2	2
 37	8	3	"Specifiek voor lichthinder bij bepaalde soortgroepen bestaan er wel internationale instrumenten (bv. richtlijnen EUROBATS rond lichthinder).
 Voor electromagnetische straling zijn er duidelijke normen via de wetgeving, maar er bestaat discussie of deze normen voldoende zijn."
 38	1	1	1
 38	1	2	2
 38	1	3	laag (index 0,156 / aantalklassen 0)
 38	2	1	1
-38	2	2	NA
+38	2	2	2
 38	2	3	lokaal
 38	3	1	2
 38	3	2	2
 38	3	3	Verspreid over heel Vlaanderen, maar op bepaalde plaatsen meer dan elders (bv. industrie, wegen, steden, ..)
 38	4	1	3
 38	4	2	3
-38	4	3	NA
+38	4	3	"Complex
+- veel sectoren: vrijwel alle ruimtegebruikers, met meeste impact van industrie, wegverkeer, recreatie, vliegvaart, bewoning
+- zeer veel, lokale bronnen
+- gaat vaak samen met verstoring door geluid; directe mortaliteit mogelijk door beweging (bv. windturbines)"
 38	5	1	3
 38	5	2	2
 38	5	3	Neen. Doorgaans worden de aanbevelingen op basis van lokale analyse (bv. MER) toegepast, steunend op beschikbare kennis en deels een expertenoordeel. Specifiek voor windturbines bestaat wel een INBO leidraad en (voor vleermuizen) beleidskader vanuit ANB.
