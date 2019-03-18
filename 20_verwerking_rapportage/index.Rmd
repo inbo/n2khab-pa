@@ -37,6 +37,7 @@ output:
 ```{r setup, include=FALSE}
 options(stringsAsFactors = FALSE)
 library(tidyverse)
+library(GGally)
 library(stringr)
 library(knitr)
 library(googlesheets)

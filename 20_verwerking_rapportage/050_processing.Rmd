@@ -37,19 +37,116 @@ actie26_sheet %>%
 
 ```{r}
 actie26 <- read_vc("actie26")
+levels(actie26$Vraag) <- 
+    c("A1_problematiek",
+      "A2a_actieradius",
+      "A2b_geogr_spreiding",
+      "A4_complexiteit",
+      "B2b_tekort_beleidsinstrum",
+      "M1_bronger_maatreg",
+      "T1_informatie",
+      "T4_grenswaarden")
 ```
 
 
 
-```{r results='asis'}
+```{r}
 actie26 %>% 
-    filter(Vraag == "A2a",
-           Antwoordtype %in% c("Score", "Uitleg")) %>% 
-    spread(key = Antwoordtype, value = Waarde) %>% 
-    select(Score, Uitleg, Milieudruk) %>% 
-    arrange(Score, Uitleg, Milieudruk) %>% 
-    pandoc.table(split.tables = Inf,
-                 justify = "left")
+    str(give.attr = FALSE)
 ```
+
+```{r eval=FALSE}
+actie26 %>% 
+    spread(key = Antwoordtype, value = Waarde) %>% 
+    summarise(
+        Score_NA = sum(is.na(Score)),
+        Betrouwbaarheid_NA = sum(is.na(Betrouwbaarheid)),
+        Uitleg_NA = sum(is.na(Uitleg)),
+    )
+```
+
+
+```{r warning=FALSE}
+actie26 %>% 
+    filter(Antwoordtype == "Score") %>% 
+    mutate(Waarde = factor(Waarde)) %>% 
+    ggplot(aes(x = Waarde)) +
+    geom_histogram(stat = "count", 
+                   fill = "springgreen4") +
+    facet_wrap(~Vraag)
+```
+
+Verdeling van de betrouwbaarheid van de antwoorden:
+
+```{r warning=FALSE}
+actie26 %>% 
+    filter(Antwoordtype == "Betrouwbaarheid") %>% 
+    mutate(Waarde = factor(Waarde)) %>% 
+    ggplot(aes(x = Vraag, fill = Waarde)) +
+    geom_bar(stat = "count") +
+    scale_fill_manual(values = c("tomato", "orange", "springgreen4")) +
+    coord_flip()
+```
+
+
+## Correlatie tussen scores
+
+```{r}
+actie26_scores <- 
+    actie26 %>% 
+    filter(Antwoordtype == "Score") %>% 
+    select(-Antwoordtype) %>% 
+    mutate(Waarde = as.integer(Waarde)) %>% 
+    spread(key = Vraag, value = Waarde)
+```
+
+```{r warning=FALSE, fig.width=10, fig.height=10}
+actie26_scores %>% 
+    select(-Milieudruk) %>% 
+    ggpairs(upper = list(continuous = GGally::wrap("cor", method = "kendall")),
+            lower = list(continuous = GGally::wrap("points", size = 0.5, alpha = 0.25))
+            ) %>% 
+        print(progress = FALSE)
+```
+
+## Gewichten van criteria
+
+```{r}
+gewichten <- 
+    tribble(
+      ~Vraag,           ~Gewicht,
+      "A1_problematiek", 10,
+      "A2a_actieradius", 2,
+      "A2b_geogr_spreiding", 5,
+      "A4_complexiteit", 4,
+      "B2b_tekort_beleidsinstrum", 7,
+      "M1_bronger_maatreg", 5,
+      "T1_informatie", 5,
+      "T4_grenswaarden", 2
+)
+gewichten %>% 
+    kable
+```
+
+
+## Rangschikking van milieudrukken
+
+```{r}
+actie26 %>% 
+    filter(Antwoordtype == "Score") %>% 
+    mutate(Waarde = as.integer(Waarde)) %>%  
+    group_by(Milieudruk) %>% 
+    summarise(Waarde = sum(Waarde)) %>% 
+    arrange(desc(Waarde)) %>% 
+    kable
+```
+
+
+
+
+
+
+
+
 
 
