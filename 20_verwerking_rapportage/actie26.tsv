@@ -22,7 +22,7 @@ Milieudruk	Vraag	Antwoordtype	Waarde
 1	6	3	"- Ja
 - Het schatten van de impact van maatregelen (modellering) is complex en kan onzekerheid met zich meebrengen"
 1	7	1	2
-1	7	2	NA
+1	7	2	2
 1	7	3	- Temperatuur- en neerslagmetingen KMI, in een aantal meetstations verspreid over Vlaanderen - Er is veel minder informatie over de effecten op kritische procesparameters
 1	8	1	1
 1	8	2	1
@@ -65,16 +65,16 @@ Milieudruk	Vraag	Antwoordtype	Waarde
 3	3	2	3
 3	3	3	Kustgebied (duinen, hele polder) en Zeeschelde
 3	4	1	3
-3	4	2	NA
+3	4	2	2
 3	4	3	"Complex
 - veel bronnen (ook internationaal)
 - sectoren industrie, transport, gebouwen
 - complexe, deels onbekende processen tussen bronnen en uiteindelijke milieudruk"
 3	5	1	3
-3	5	2	NA
+3	5	2	2
 3	5	3	Nee, er is wel een internationaal kader maar dat is nog niet geïmplementeerd in Vlaanderen
 3	6	1	2
-3	6	2	NA
+3	6	2	2
 3	6	3	"- Ja
 - Het schatten van de impact van maatregelen (modellering) is complex en kan onzekerheid met zich meebrengen"
 3	7	1	3
@@ -98,7 +98,7 @@ Milieudruk	Vraag	Antwoordtype	Waarde
 - veel sectoren, maar per locatie eenvoudig (meestal 1 actor)
 - weliswaar veel bronnen (lokaal)"
 4	5	1	2
-4	5	2	NA
+4	5	2	2
 4	5	3	Deels, er zijn beleidsinstrumenten (vooral natuurdecreet, habitatrichtlijn, ruimtelijke ordening en in beperktere mate bosdecreet) toegepast in vergunningenverlening en handhaving maar implementatie biedt nog onvoldoende bescherming
 4	6	1	3
 4	6	2	2
@@ -114,7 +114,7 @@ Milieudruk	Vraag	Antwoordtype	Waarde
 5	1	2	3
 5	1	3	matig (index 0,392 / aantalklassen 0)
 5	2	1	0
-5	2	2	NA
+5	2	2	2
 5	2	3	lokaal
 5	3	1	3
 5	3	2	2
