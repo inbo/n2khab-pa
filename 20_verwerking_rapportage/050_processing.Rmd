@@ -1,6 +1,6 @@
 # Resultaten
 
-## Verkenning van de scores per milieudruk
+## Spreiding van de scores per vraag
 
 ```{r message=FALSE, eval=FALSE}
 actie26_sheet <- gs_key("1iaHBHlVNh9Cw35_9DYb0WDxmVJgpOEck_wBcFWVvsfk")
@@ -65,9 +65,13 @@ actie26 %>%
     )
 ```
 
+Figuur \@ref(fig:scores) geeft weer hoe de scores verdeeld zijn over de verschillende vragen. We stellen vast:
 
+- de spreiding over scores loopt uiteen tussen vragen: soms is de spreiding meer gelijkmatig, soms met nadruk op één specifieke score (bv. vraag M1);
+- bij sommige vragen ontbreken milieudrukken met een score 0;
+- de meest frequent gescoorde waarde verschilt tussen de vragen.
 
-```{r warning=FALSE}
+```{r scores, fig.width=6, fig.height=5, warning=FALSE, fig.cap="Frequentie van de scores (van 0 tot 3) per vraag."}
 actie26 %>% 
     filter(Antwoordtype == "Score") %>% 
     mutate(Waarde = factor(Waarde)) %>% 
@@ -77,9 +81,15 @@ actie26 %>%
     facet_wrap(~Vraag)
 ```
 
-Verdeling van de betrouwbaarheid van de antwoorden:
+Figuur \@ref(fig:betrouw) toont de verdeling van de betrouwbaarheid van de antwoorden (scores), waarbij we opmerken:
 
-```{r warning=FALSE}
+- er zijn geen antwoorden met een betrouwbaarheid '0'. Dit betekent dat er minstens enige kennisbasis was om een antwoord te geven;
+- er zijn een beperkter aantal gevallen met betrouwbaarheid '1', waarvoor het antwoord en de score best kritisch worden nagekeken door andere experten;
+- de verdeling tussen betrouwbaarheid '2' en '3' varieert tussen de vragen (3 is het maximum, dus met een grote zekerheid).
+    - Er is vaak een score 2 gegeven, wat betekent dat er een redelijke inschatting kon worden gegeven, maar dat nazicht in sommige gevallen tot een bijstelling zou kunnen leiden.
+    - Alleen voor vraag A1 is de betrouwbaarheid vaker als '3' ingeschat; d.i. wanneer de kennis van de habitatexperten voor een milieudruk voldoende toereikend is ingeschat.
+
+```{r betrouw, fig.height=2, fig.width=6, warning=FALSE, fig.cap="Verdeling van de betrouwbaarheid (van 0 tot 3) van de score per vraag."}
 actie26 %>% 
     filter(Antwoordtype == "Betrouwbaarheid") %>% 
     mutate(Waarde = factor(Waarde)) %>% 
@@ -101,20 +111,44 @@ actie26_scores <-
     spread(key = Vraag, value = Waarde)
 ```
 
-```{r warning=FALSE, fig.width=10, fig.height=10}
+De (ordinale) Kendall-correlatie tussen de vragen (op basis van de gegeven scores) is overwegend beperkt (Figuur \@ref(fig:corr)). We merken wel de volgende hogere correlaties op:
+
+- tussen A1_problematiek en A2b_geogr_spreiding;
+- tussen A1_problematiek en T4_grenswaarden;
+- tussen A4_complexiteit en A2a_actieradius;
+- tussen A4_complexiteit en A2b_geogr_spreiding.
+
+Dit betekent dat deze duo's van criteria telkens op een eerder gelijkaardige manier de milieudrukken zouden rangschikken.
+Dit betekent echter niet automatisch dat de relevantie van elk zo'n criterium voor de rangschikking kleiner is.
+Ze kunnen nog steeds, omwille van hun inhoudelijke betekenis, elk evenveel -- of volgens een gekozen sleutel -- *meewegen* op de rangschikking.
+
+```{r corr, warning=FALSE, fig.width=10, fig.height=10, fig.cap="Kendall correlatie en 'jittered' scatterplots van de relatie tussen de vragen."}
 actie26_scores %>% 
     select(-Milieudruk) %>% 
     ggpairs(upper = list(continuous = GGally::wrap("cor", method = "kendall")),
-            lower = list(continuous = GGally::wrap("points", size = 0.5, alpha = 0.25))
+            lower = list(continuous = GGally::wrap("points", 
+                                                   size = 0.5, 
+                                                   alpha = 0.4, 
+                                                   position = position_jitter(width = 0.2, height = 0.2)))
             ) %>% 
         print(progress = FALSE)
 ```
 
-## Gewichten toekennen aan criteria
+## Rangschikking van milieudrukken
 
-XXXX Als we dit gaan gebruiken, wordt de onderstaande tabel best verhuisd naar een hoofdstuk 'methoden'.
+Er zijn verschillende manieren om de milieudrukken te rangschikken op basis van de scores:
 
-```{r}
+- de meest zinvolle lijkt dat het beleid zelf aangeeft welke vragen meer zouden moeten meespelen dan andere, uitgedrukt als (relatieve) gewichten, zodat op basis daarvan een **gewogen eindscore** kan worden berekend;
+- een alternatief is om elke vraag evenveel te wegen in de berekening van een zg. **ongewogen eindscore**;
+- tenslotte is het mogelijk om automatische criteriaweging te laten gebeuren op basis van de correlatie tussen vragen, dus op basis van de variatie tussen de milieudrukken: een ordinatie-as (zie verder: PCA) vat dan informatie samen op een zodanige manier dat dit maximaal de -- voor alle vragen gezamenlijke -- variatie tussen de milieudrukken weergeeft.
+Het lijkt ons echter minder zinvol om dit als basis voor rangschikking te gebruiken.
+De resultaten van een PCA-ordinatie worden wel weergegeven, maar dan louter om de variatie tussen milieudrukken in relatie tot de vragen weer te geven.
+
+In Tabel \@ref(tab:gewichttabel) wordt aangegeven welke gewichten worden gebruikt voor de berekening van een gewogen eindscore.
+
+_XXXX Als we gewichten gaan gebruiken, wordt de onderstaande tabel best verhuisd naar een hoofdstuk 'methoden'._
+
+```{r gewichttabel}
 gewichten <- 
     tribble(
       ~Vraag,           ~Gewicht,
@@ -129,13 +163,14 @@ gewichten <-
 ) %>% 
     mutate(Vraag = factor(Vraag))
 gewichten %>% 
-    kable
+    kable(caption = "Gekozen gewichten per vraag. De waarden zijn relatief te beschouwen.")
 ```
 
+Tabel \@ref(tab:eindscores) geeft de berekende gewogen en ongewogen eindscores weer (gewogen en ongewogen gemiddelde score per milieudruk). Tevens wordt een rangnummer weergegeven per milieudruk, voor elk van de scores.
 
-## Rangschikking van milieudrukken
+\scriptsize
 
-```{r message=FALSE}
+```{r eindscores, message=FALSE, results='asis'}
 actie26_rang <- 
     actie26 %>% 
     filter(Antwoordtype == "Score") %>% 
@@ -154,10 +189,18 @@ actie26_rang <-
 actie26_rang %>% 
     arrange(Rang_gewogen, 
             Rang_ongewogen) %>% 
-    kable
+    pandoc.table(
+      caption = "(\\#tab:eindscores)Eindscores en rangschikking van milieudrukken.",
+      split.table = Inf ,
+     # split.cells = c(30,50),
+     justify = "left"
+    )
+    # kable(caption = "Eindscores en rangschikking van milieudrukken.")
 ```
 
-```{r pca, message=FALSE}
+\normalsize
+
+```{r message=FALSE}
 actie26_scores_kort <- 
     actie26_scores %>% 
     inner_join(actie26_rang) %>% 
@@ -168,10 +211,28 @@ actie26_scores_kort <-
     mutate(String = ifelse(String == "stikstof", "N",
                            ifelse(String == "fosfor", "P", String))) %>% 
     tidyr::unite("Milieudruk_kort", c("Nummer", "String"), sep = "")
+# actie26_scores_kort %>% str
+```
+
+We stellen vast dat er nog steeds een goede relatie bestaat tussen de ongewogen en de gewogen rangschikking (Figuur \@ref(fig:grafiek-eindscores)).
+De gewogen rangschikking resulteert echter in minder _ex aequo_'s tussen milieudrukken dan de ongewogen rangschikking, wat een bijkomend voordeel is.
+
+
+```{r grafiek-eindscores, fig.width=8, fig.height=6, fig.cap="Grafische rangschikking van milieudrukken volgens gewogen en ongewogen score."}
+actie26_scores_kort %>% 
+    ggplot(aes(x = Eindscore_ongewogen, 
+               y = Eindscore_gewogen, 
+               label = Milieudruk_kort)) +
+    geom_point(size = 3, shape = 21, fill = "springgreen4") +
+    geom_text(size = 3, nudge_x = 0.05)
+```
+
+
+```{r pca, message=FALSE}
 actie26_pca <- 
     actie26_scores_kort %>% 
     column_to_rownames(var = "Milieudruk_kort") %>% 
-    select(2:9) %>% 
+    select(1:8) %>% 
     rda() # dit doet een PCA, maar levert een vegan-compatibel object op (prcomp-functie niet)
 ```
 
@@ -180,7 +241,8 @@ actie26_pca %>%
     ggscreeplot("both")
 ```
 
-Of numeriek:
+De principale-componentenanalyse (PCA) vat de variatie in de set van scores (milieudruk x vraag) samen met principale componenten.
+Het onderstaande resultaat toont dat de eerste drie principale componenten (PC's) ongeveer drie kwart van de variatie verklaren.
 
 ```{r pca_stats}
 actie26_pca %>% 
@@ -227,7 +289,9 @@ basisbiplot2 <-
 
 
 
-De ordinatiediagrammen (biplots) zijn louter een verder visueel hulpmiddel om de types te spreiden in een ruimte op basis van de geselecteerde kenmerken. Onderstaand zijn 2 biplots weergegeven (PC1+2 resp. PC1+3) waar de pijlen de relatie van de 4 indices met de PC's en hun onderlinge relatie vertegenwoordigen. De types zijn gekleurd volgens `Totaalindex`:
+De ordinatiediagrammen (biplots) in Figuren \@ref(fig:biplot12) en \@ref(fig:biplot13) zijn louter te zien als een verder visueel hulpmiddel om de milieudrukken te spreiden in een ruimte op basis van de vragen, en om de correlatie tussen vragen te zien.
+Onderstaand zijn 2 biplots weergegeven (PC1+2 resp. PC1+3) waar de pijlen de relatie van de vragen met de PC's en hun onderlinge relatie vertegenwoordigen.
+De milieudrukken zijn gekleurd volgens de gewogen eindscore.
 
 ```{r message = FALSE, warning=FALSE}
 biplotopmaak <- list(
@@ -256,15 +320,15 @@ bp13 <-
 
 
 
-```{r biplot_met_punten12, fig.width=10, fig.height=10}
+```{r biplot12, fig.width=10, fig.height=10, fig.cap="PCA biplot van de principale componenten 1 en 2. De kleurgradiënt is volgens de gewogen eindscore."}
 bp12 +
     list(geom_text(aes(label = Milieudruk_kort), size = 3, vjust = 2)
         )
 ```
 
 
-```{r biplot_met_punten13, fig.width=10, fig.height=10}
-bp12 +
+```{r biplot13, fig.width=10, fig.height=10, fig.cap="PCA biplot van de principale componenten 1 en 3. De kleurgradiënt is volgens de gewogen eindscore."}
+bp13 +
     list(geom_text(aes(label = Milieudruk_kort), size = 3, vjust = 2)
         )
 ```
