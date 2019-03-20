@@ -71,6 +71,8 @@ Figuur \@ref(fig:scores) geeft weer hoe de scores verdeeld zijn over de verschil
 - bij sommige vragen ontbreken milieudrukken met een score 0;
 - de meest frequent gescoorde waarde verschilt tussen de vragen.
 
+De verschillende vragen leveren dus complementaire informatie op die een antwoord kan geven over de nood aan een programmatische aanpak voor elk van de verschillende milieudrukken.  
+
 ```{r scores, fig.width=6, fig.height=5, warning=FALSE, fig.cap="Frequentie van de scores (van 0 tot 3) per vraag."}
 actie26 %>% 
     filter(Antwoordtype == "Score") %>% 
@@ -78,7 +80,8 @@ actie26 %>%
     ggplot(aes(x = Waarde)) +
     geom_histogram(stat = "count", 
                    fill = "springgreen4") +
-    facet_wrap(~Vraag)
+    facet_wrap(~Vraag) +
+    labs(x = "Score", y = "Aantal milieudrukken")
 ```
 
 Figuur \@ref(fig:betrouw) toont de verdeling van de betrouwbaarheid van de antwoorden (scores), waarbij we opmerken:
@@ -96,7 +99,8 @@ actie26 %>%
     ggplot(aes(x = Vraag, fill = Waarde)) +
     geom_bar(stat = "count") +
     scale_fill_manual(values = c("tomato", "orange", "springgreen4")) +
-    coord_flip()
+    coord_flip() +
+    labs(x = "Aantal milieudrukken", fill = "Betrouwbaarheid")
 ```
 
 
@@ -111,7 +115,7 @@ actie26_scores <-
     spread(key = Vraag, value = Waarde)
 ```
 
-De (ordinale) Kendall-correlatie tussen de vragen (op basis van de gegeven scores) is overwegend beperkt (Figuur \@ref(fig:corr)). We merken wel de volgende hogere correlaties op:
+De (ordinale) Kendall-correlatie tussen de vragen (op basis van de gegeven scores) is overwegend beperkt (Figuur \@ref(fig:corr)). We merken wel de volgende hogere (positieve) correlaties op:
 
 - tussen A1_problematiek en A2b_geogr_spreiding;
 - tussen A1_problematiek en T4_grenswaarden;
@@ -214,7 +218,7 @@ actie26_scores_kort <-
 # actie26_scores_kort %>% str
 ```
 
-We stellen vast dat er nog steeds een goede relatie bestaat tussen de ongewogen en de gewogen rangschikking (Figuur \@ref(fig:grafiek-eindscores)).
+We stellen vast dat er -ondanks de weging- een sterke relatie bestaat tussen de ongewogen en de gewogen rangschikking (Figuur \@ref(fig:grafiek-eindscores)).
 De gewogen rangschikking resulteert echter in minder _ex aequo_'s tussen milieudrukken dan de ongewogen rangschikking, wat een bijkomend voordeel is.
 
 
