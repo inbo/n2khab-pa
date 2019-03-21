@@ -144,67 +144,86 @@ actie26_scores %>%
 
 Er zijn verschillende manieren om de milieudrukken te rangschikken op basis van de scores:
 
-- de meest zinvolle lijkt dat het beleid zelf aangeeft welke vragen meer zouden moeten meespelen dan andere, uitgedrukt als (relatieve) gewichten, zodat op basis daarvan een **gewogen eindscore** kan worden berekend;
+- de meest zinvolle lijkt dat het beleid zelf aangeeft welke vragen meer zouden moeten meespelen dan andere, uitgedrukt als (relatieve) gewichten, zodat op basis daarvan een **gewogen eindscore** kan worden berekend
+We beschouwen twee scenario's om een goede bespreking op te kunnen baseren:
+    - één scenario dat de nadruk legt op de noodzaak, bekeken vanuit de huidige problemen (milieu: vraagA1; beleidsinstrumenten: vraag B2b) om de instandhoudingsdoelstelling te bereiken (hoe hoger deze problematiek, hoe meer noodzakelijk);
+    - één scenario dat de nadruk legt op de relatieve eenvoud om een programmatische aanpak te kunnen implementeren, vooral gericht op de mogelijkheid van brongerichte maatregelen (vraag M1) en op de beschikbaarheid aan basisinformatie (vragen T1 en T4).
 - een alternatief is om elke vraag evenveel te wegen in de berekening van een zg. **ongewogen eindscore**;
 - tenslotte is het mogelijk om automatische criteriaweging te laten gebeuren op basis van de correlatie tussen vragen, dus op basis van de variatie tussen de milieudrukken: een ordinatie-as (zie verder: PCA) vat dan informatie samen op een zodanige manier dat dit maximaal de -- voor alle vragen gezamenlijke -- variatie tussen de milieudrukken weergeeft.
 Het lijkt ons echter minder zinvol om dit als basis voor rangschikking te gebruiken.
 De resultaten van een PCA-ordinatie worden wel weergegeven, maar dan louter om de variatie tussen milieudrukken in relatie tot de vragen weer te geven.
 
-In Tabel \@ref(tab:gewichttabel) wordt aangegeven welke gewichten worden gebruikt voor de berekening van een gewogen eindscore.
+In Tabel \@ref(tab:gewichttabel) wordt aangegeven welke gewichten voor elk scenario worden gebruikt voor de berekening van een gewogen eindscore.
 
-_XXXX Als we gewichten gaan gebruiken, wordt de onderstaande tabel best verhuisd naar een hoofdstuk 'methoden'._
+_XXXX Deze passages verhuizen best naar een hoofdstuk 'methoden'._
 
 ```{r gewichttabel}
 gewichten <- 
     tribble(
-      ~Vraag,           ~Gewicht,
-      "A1_problematiek", 10,
-      "A2a_actieradius", 2,
-      "A2b_geogr_spreiding", 5,
-      "A4_complexiteit", 4,
-      "B2b_tekort_beleidsinstrum", 7,
-      "M1_bronger_maatreg", 5,
-      "T1_informatie", 5,
-      "T4_grenswaarden", 2
+      ~Vraag,            ~Ongewogen, ~Scenario_1,   ~Scenario_2,
+      "A1_problematiek", 1, 10, 2,
+      "A2a_actieradius", 1, 2, 2, 
+      "A2b_geogr_spreiding", 1, 5, 2,
+      "A4_complexiteit", 1, 4, 5,
+      "B2b_tekort_beleidsinstrum", 1, 7, 5,
+      "M1_bronger_maatreg", 1, 5, 10,
+      "T1_informatie", 1, 5, 10,
+      "T4_grenswaarden", 1, 2, 7
 ) %>% 
     mutate(Vraag = factor(Vraag))
 gewichten %>% 
     kable(caption = "Gekozen gewichten per vraag. De waarden zijn relatief te beschouwen.")
 ```
 
-Tabel \@ref(tab:eindscores) geeft de berekende gewogen en ongewogen eindscores weer (gewogen en ongewogen gemiddelde score per milieudruk). Tevens wordt een rangnummer weergegeven per milieudruk, voor elk van de scores.
+### Eindscores per scenario
 
-\scriptsize
 
-```{r eindscores, message=FALSE, results='asis'}
-actie26_rang <- 
+```{r message=FALSE}
+actie26_rang <-
     actie26 %>% 
     filter(Antwoordtype == "Score") %>% 
     inner_join(gewichten) %>% 
+    gather(key = "Scenario", value = "Gewicht", 5:7) %>% 
     mutate(Waarde = as.integer(Waarde),
-           Gewogen = Waarde * Gewicht) %>%  
-    group_by(Milieudruk) %>% 
-    summarise(Eindscore_gewogen = sum(Gewogen) / sum(Gewicht),
-              Eindscore_ongewogen = mean(Waarde)
+           Tussenscore = Waarde * Gewicht) %>%  
+    group_by(Scenario, Milieudruk) %>% 
+    summarise(Eindscore = sum(Tussenscore) / sum(Gewicht)
               ) %>% 
-    mutate(Rang_gewogen = rank(Eindscore_gewogen * (-1), 
-                                 ties.method = "min"),
-           Rang_ongewogen = rank(Eindscore_ongewogen * (-1), 
+    mutate(Rang = rank(Eindscore * (-1), 
                                  ties.method = "min")
            )
+```
+
+Tabel \@ref(tab:eindscores) geeft de berekende eindscores weer per scenario (gewogen of ongewogen gemiddelde score per milieudruk).
+Tabel \@ref(tab:rang) geeft een rangnummer weer per milieudruk, voor elk van de scenario's.
+
+
+```{r eindscores, results='asis'}
 actie26_rang %>% 
-    arrange(Rang_gewogen, 
-            Rang_ongewogen) %>% 
+    select(-Rang) %>% 
+    spread(key = Scenario, value = Eindscore) %>% 
+    arrange(desc(Scenario_1)) %>% 
     pandoc.table(
-      caption = "(\\#tab:eindscores)Eindscores en rangschikking van milieudrukken.",
+      caption = "(\\#tab:eindscores)Eindscores van milieudrukken, gerangschikt volgens scenario 1.",
       split.table = Inf ,
      # split.cells = c(30,50),
      justify = "left"
     )
-    # kable(caption = "Eindscores en rangschikking van milieudrukken.")
 ```
 
-\normalsize
+```{r rang, results='asis'}
+actie26_rang %>% 
+    select(-Eindscore) %>% 
+    spread(key = Scenario, value = Rang) %>% 
+    arrange(Scenario_1) %>% 
+    pandoc.table(
+      caption = "(\\#tab:eindscores)Rangnummer van milieudrukken, gerangschikt volgens scenario 1.",
+      split.table = Inf ,
+     # split.cells = c(30,50),
+     justify = "left"
+    )
+```
+
 
 ```{r message=FALSE}
 actie26_scores_kort <- 
@@ -220,23 +239,67 @@ actie26_scores_kort <-
 # actie26_scores_kort %>% str
 ```
 
-We stellen vast dat er -ondanks de weging- een sterke relatie bestaat tussen de ongewogen en de gewogen rangschikking (Figuur \@ref(fig:grafiek-eindscores)).
-De gewogen rangschikking resulteert echter in minder _ex aequo_'s tussen milieudrukken dan de ongewogen rangschikking, wat een bijkomend voordeel is.
+### Verschillen en relaties tussen scenario's
 
-
-```{r grafiek-eindscores, fig.width=8, fig.height=6, fig.cap="Grafische rangschikking van milieudrukken volgens gewogen en ongewogen score."}
+```{r fig.width=7, fig.height=9}
 actie26_scores_kort %>% 
-    ggplot(aes(x = Eindscore_ongewogen, 
-               y = Eindscore_gewogen, 
+    ggplot(aes(x = Scenario, 
+               y = Rang, 
+               group = Milieudruk_kort,
+               label = Milieudruk_kort)) +
+    geom_line(aes(colour = Milieudruk_kort)) +
+    geom_text_repel(size = 3, segment.color = "gray50") +
+    scale_y_continuous(trans = "reverse")
+```
+
+XXXXX Deze figuur is te bespreken als we dit er allemaal in houden. Bv. het zakken van 3.2P en 3.3P en het stijgen van o.a. 7.1, 7.3 en 5.2.
+
+We stellen vast dat er -ondanks de wegingen- een sterke relatie bestaat tussen de ongewogen en de gewogen rangschikking (Figuren \@ref(fig:grafiek-eindscores1) en \@ref(fig:grafiek-eindscores2)).
+De rangschikking volgens scenario 1 resulteert in minder _ex aequo_'s tussen milieudrukken dan de overige rangschikkingen, wat een voordeel is.
+Uit de relatie tussen scenario 1 en 2 (Figuur \@ref(fig:grafiek-eindscores12)) zien we inderdaad dat scenario 1 de milieudrukken beter uit elkaar haalt.
+Er blijft een duidelijk positief verband tussen scenario 1 en 2.
+
+
+```{r grafiek-eindscores1, fig.width=8, fig.height=6, fig.cap="Grafische rangschikking van milieudrukken volgens eindscore van ongewogen scenario en scenario 1."}
+actie26_scores_kort %>% 
+    select(-Rang) %>% 
+    spread(key = Scenario, value = Eindscore) %>% 
+    ggplot(aes(x = Ongewogen, 
+               y = Scenario_1, 
                label = Milieudruk_kort)) +
     geom_point(size = 3, shape = 21, fill = "springgreen4") +
-    geom_text(size = 3, nudge_x = 0.05)
+    geom_text_repel(size = 3, segment.color = "gray50")
+```
+
+
+```{r grafiek-eindscores2, fig.width=8, fig.height=6, fig.cap="Grafische rangschikking van milieudrukken volgens eindscore van ongewogen scenario en scenario 2."}
+actie26_scores_kort %>% 
+    select(-Rang) %>% 
+    spread(key = Scenario, value = Eindscore) %>% 
+    ggplot(aes(x = Ongewogen, 
+               y = Scenario_2, 
+               label = Milieudruk_kort)) +
+    geom_point(size = 3, shape = 21, fill = "springgreen4") +
+    geom_text_repel(size = 3, segment.color = "gray50")
+```
+
+
+```{r grafiek-eindscores12, fig.width=8, fig.height=6, fig.cap="Grafische rangschikking van milieudrukken volgens eindscore van scenario 1 en 2."}
+actie26_scores_kort %>% 
+    select(-Rang) %>% 
+    spread(key = Scenario, value = Eindscore) %>% 
+    ggplot(aes(x = Scenario_1, 
+               y = Scenario_2, 
+               label = Milieudruk_kort)) +
+    geom_point(size = 3, shape = 21, fill = "springgreen4") +
+    geom_text_repel(size = 3, segment.color = "gray50")
 ```
 
 
 ```{r pca, message=FALSE}
 actie26_pca <- 
     actie26_scores_kort %>% 
+    filter(Scenario == "Scenario_1") %>% 
     column_to_rownames(var = "Milieudruk_kort") %>% 
     select(1:8) %>% 
     rda() # dit doet een PCA, maar levert een vegan-compatibel object op (prcomp-functie niet)
@@ -246,6 +309,8 @@ actie26_pca <-
 actie26_pca %>% 
     ggscreeplot("both")
 ```
+
+### Eindscore in een PCA-biplot
 
 De principale-componentenanalyse (PCA) vat de variatie in de set van scores (milieudruk x vraag) samen met principale componenten.
 Het onderstaande resultaat toont dat de eerste drie principale componenten (PC's) ongeveer drie kwart van de variatie verklaren.
@@ -267,7 +332,9 @@ actie26_scores_rang_pca <-
     as.data.frame %>% 
     rownames_to_column(var = "Milieudruk_kort") %>% 
     mutate_at(.vars = 2:4, .funs = function(x) x*2) %>% 
-    inner_join(actie26_scores_kort, .)
+    inner_join(actie26_scores_kort %>% 
+                   filter(Scenario == "Scenario_1"), 
+               .)
 actie26_scores_rang_pca %>% str
 ```
 
@@ -297,7 +364,7 @@ basisbiplot2 <-
 
 De ordinatiediagrammen (biplots) in Figuren \@ref(fig:biplot12) en \@ref(fig:biplot13) zijn louter te zien als een verder visueel hulpmiddel om de milieudrukken te spreiden in een ruimte op basis van de vragen, en om de correlatie tussen vragen te zien.
 Onderstaand zijn 2 biplots weergegeven (PC1+2 resp. PC1+3) waar de pijlen de relatie van de vragen met de PC's en hun onderlinge relatie vertegenwoordigen.
-De milieudrukken zijn gekleurd volgens de gewogen eindscore.
+De milieudrukken zijn gekleurd volgens de eindscore van scenario 1.
 
 ```{r message = FALSE, warning=FALSE}
 biplotopmaak <- list(
@@ -309,7 +376,7 @@ bp12 <-
     basisbiplot1 +
     list(actie26_scores_rang_pca,
          aes(x = PC1, y = PC2),
-         geom_point(aes(fill = Eindscore_gewogen), size = 3, shape = 21),
+         geom_point(aes(fill = Eindscore), size = 3, shape = 21),
          scale_fill_gradientn(colours = rev(topo.colors(25)))
         ) +
     biplotopmaak
@@ -318,7 +385,7 @@ bp13 <-
     basisbiplot2 +
     list(actie26_scores_rang_pca,
          aes(x = PC1, y = PC3),
-         geom_point(aes(fill = Eindscore_gewogen), size = 3, shape = 21),
+         geom_point(aes(fill = Eindscore), size = 3, shape = 21),
          scale_fill_gradientn(colours = rev(topo.colors(25)))
         ) +
     biplotopmaak
@@ -326,16 +393,16 @@ bp13 <-
 
 
 
-```{r biplot12, fig.width=10, fig.height=10, fig.cap="PCA biplot van de principale componenten 1 en 2. De kleurgradiënt is volgens de gewogen eindscore."}
+```{r biplot12, fig.width=10, fig.height=10, fig.cap="PCA biplot van de principale componenten 1 en 2. De kleurgradiënt is volgens de eindscore van scenario 1."}
 bp12 +
-    list(geom_text(aes(label = Milieudruk_kort), size = 3, vjust = 2)
+    list(geom_text_repel(aes(label = Milieudruk_kort), size = 3, segment.colour = "gray50")
         )
 ```
 
 
-```{r biplot13, fig.width=10, fig.height=10, fig.cap="PCA biplot van de principale componenten 1 en 3. De kleurgradiënt is volgens de gewogen eindscore."}
+```{r biplot13, fig.width=10, fig.height=10, fig.cap="PCA biplot van de principale componenten 1 en 3. De kleurgradiënt is volgens de eindscore van scenario 1."}
 bp13 +
-    list(geom_text(aes(label = Milieudruk_kort), size = 3, vjust = 2)
+    list(geom_text_repel(aes(label = Milieudruk_kort), size = 3, segment.colour = "gray50")
         )
 ```
 
