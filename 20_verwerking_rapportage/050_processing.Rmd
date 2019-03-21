@@ -100,7 +100,7 @@ actie26 %>%
     geom_bar(stat = "count") +
     scale_fill_manual(values = c("tomato", "orange", "springgreen4")) +
     coord_flip() +
-    labs(x = "Aantal milieudrukken", fill = "Betrouwbaarheid")
+    labs(y = "Aantal milieudrukken", fill = "Betrouwbaarheid")
 ```
 
 
