@@ -1,6 +1,8 @@
 # Resultaten
 
-## Spreiding van de scores per vraag
+## Algemene verkenning
+
+### Spreiding van de scores per vraag
 
 ```{r message=FALSE, eval=FALSE}
 actie26_sheet <- gs_key("1iaHBHlVNh9Cw35_9DYb0WDxmVJgpOEck_wBcFWVvsfk")
@@ -104,7 +106,7 @@ actie26 %>%
 ```
 
 
-## Correlatie tussen scores
+### Correlatie tussen scores
 
 ```{r}
 actie26_scores <- 
