@@ -256,7 +256,7 @@ actie26_scores_kort %>%
     scale_y_continuous(trans = "reverse")
 ```
 
-XXXXX Deze figuur is te bespreken als we dit er allemaal in houden. Bv. het zakken van 3.2P en 3.3P en het stijgen van o.a. 7.1, 7.3 en 5.2.
+_XXXXX Deze figuur is te bespreken als we dit er allemaal in houden. Bv. het zakken van 3.2P en 3.3P en het stijgen van o.a. 7.1, 7.3 en 5.2._
 
 We stellen vast dat er -ondanks de wegingen- een sterke relatie bestaat tussen de ongewogen en de gewogen rangschikking (Figuren \@ref(fig:grafiek-eindscores1) en \@ref(fig:grafiek-eindscores2)).
 De rangschikking volgens scenario 1 resulteert in minder _ex aequo_'s tussen milieudrukken dan de overige rangschikkingen, wat een voordeel is.
@@ -314,7 +314,7 @@ actie26_pca %>%
     ggscreeplot("both")
 ```
 
-### Eindscore in een PCA-biplot
+### Weergave van de eindscore in een PCA-biplot
 
 De principale-componentenanalyse (PCA) vat de variatie in de set van scores (milieudruk x vraag) samen met principale componenten.
 Het onderstaande resultaat toont dat de eerste drie principale componenten (PC's) ongeveer drie kwart van de variatie verklaren.
@@ -368,7 +368,7 @@ basisbiplot2 <-
 
 De ordinatiediagrammen (biplots) in Figuren \@ref(fig:biplot12) en \@ref(fig:biplot13) zijn louter te zien als een verder visueel hulpmiddel om de milieudrukken te spreiden in een ruimte op basis van de vragen, en om de correlatie tussen vragen te zien.
 Onderstaand zijn 2 biplots weergegeven (PC1+2 resp. PC1+3) waar de pijlen de relatie van de vragen met de PC's en hun onderlinge relatie vertegenwoordigen.
-De milieudrukken zijn gekleurd volgens de eindscore van scenario 1.
+De milieudrukken zijn **gekleurd volgens de eindscore** van scenario 1.
 
 ```{r message = FALSE, warning=FALSE}
 biplotopmaak <- list(
