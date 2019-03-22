@@ -157,7 +157,7 @@ In Tabel \@ref(tab:gewichttabel) wordt aangegeven welke gewichten voor elk scena
 
 _XXXX Deze passages verhuizen best naar een hoofdstuk 'methoden'._
 
-```{r gewichttabel}
+```{r gewichttabel, results='asis'}
 gewichten <- 
     tribble(
       ~Vraag,            ~Ongewogen, ~Scenario_1,   ~Scenario_2,
@@ -172,7 +172,11 @@ gewichten <-
 ) %>% 
     mutate(Vraag = factor(Vraag))
 gewichten %>% 
-    kable(caption = "Gekozen gewichten per vraag. De waarden zijn relatief te beschouwen.")
+    pandoc.table(
+      caption = "(\\#tab:gewichttabel)Gekozen gewichten per vraag. De waarden zijn relatief te beschouwen.",
+      split.table = Inf ,
+      justify = "left"
+    )
 ```
 
 ### Eindscores per scenario
