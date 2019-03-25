@@ -207,9 +207,10 @@ De eindscores zelf zijn opgenomen in bijlage \@ref(app:eindscores) (gewogen of o
 actie26_rang %>% 
     select(-Eindscore) %>% 
     spread(key = Scenario, value = Rang) %>% 
-    arrange(Scenario_1) %>% 
+    arrange(Ongewogen, Scenario_1) %>% 
     pandoc.table(
-      caption = "(\\#tab:rang)Rangnummer van milieudrukken, gerangschikt volgens scenario 1.",
+      caption = "(\\#tab:rang)Rangnummer van milieudrukken, \
+      gerangschikt volgens het ongewogen scenario en dan volgens scenario 1.",
       split.table = Inf ,
      # split.cells = c(30,50),
      justify = "left"

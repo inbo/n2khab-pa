@@ -9,9 +9,10 @@ Tabel \@ref(tab:eindscores) geeft de berekende eindscores weer per scenario (gew
 actie26_rang %>%
     select(-Rang) %>%
     spread(key = Scenario, value = Eindscore) %>%
-    arrange(desc(Scenario_1)) %>%
+    arrange(desc(Ongewogen), desc(Scenario_1)) %>%
     pandoc.table(
-      caption = "(\\#tab:eindscores)Eindscores van milieudrukken, gerangschikt volgens scenario 1.",
+      caption = "(\\#tab:eindscores)Eindscores van milieudrukken,\
+      aflopend gerangschikt volgens het ongewogen scenario en dan volgens scenario 1.",
       split.table = Inf ,
      # split.cells = c(30,50),
      justify = "left"
