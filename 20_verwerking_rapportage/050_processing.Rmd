@@ -234,7 +234,7 @@ actie26_scores_kort <-
 
 ### Verschillen en relaties tussen scenario's
 
-```{r fig.width=7, fig.height=9}
+```{r mikado, fig.width=7, fig.height=9, fig.cap="Lijngrafiek voor opsporing van overeenkomsten en verschillen in het rangnummer van milieudrukken, volgens de verschillende scenario's."}
 actie26_scores_kort %>% 
     ggplot(aes(x = Scenario, 
                y = Rang, 
