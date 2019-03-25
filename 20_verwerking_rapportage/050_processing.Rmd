@@ -144,9 +144,9 @@ actie26_scores %>%
 
 Er zijn verschillende manieren om de milieudrukken te rangschikken op basis van de scores:
 
-- de meest zinvolle lijkt dat het beleid zelf aangeeft welke vragen meer zouden moeten meespelen dan andere, uitgedrukt als (relatieve) gewichten, zodat op basis daarvan een **gewogen eindscore** kan worden berekend
+- de meest zinvolle lijkt dat het beleid zelf aangeeft welke vragen meer zouden moeten meespelen dan andere, uitgedrukt als (relatieve) gewichten, zodat op basis daarvan een **gewogen eindscore** kan worden berekend.
 We beschouwen twee scenario's om een goede bespreking op te kunnen baseren:
-    - één scenario dat de nadruk legt op de noodzaak, bekeken vanuit de huidige problemen (milieu: vraagA1; beleidsinstrumenten: vraag B2b) om de instandhoudingsdoelstelling te bereiken (hoe hoger deze problematiek, hoe meer noodzakelijk);
+    - één scenario dat de nadruk legt op de noodzaak aan een programmatische aanpak, bekeken vanuit de huidige problemen (milieu: vraagA1; beleidsinstrumenten: vraag B2b) om de instandhoudingsdoelstelling te bereiken (hoe hoger deze problematiek, hoe meer noodzakelijk);
     - één scenario dat de nadruk legt op de relatieve eenvoud om een programmatische aanpak te kunnen implementeren, vooral gericht op de mogelijkheid van brongerichte maatregelen (vraag M1) en op de beschikbaarheid aan basisinformatie (vragen T1 en T4).
 - een alternatief is om elke vraag evenveel te wegen in de berekening van een zg. **ongewogen eindscore**;
 - tenslotte is het mogelijk om automatische criteriaweging te laten gebeuren op basis van de correlatie tussen vragen, dus op basis van de variatie tussen de milieudrukken: een ordinatie-as (zie verder: PCA) vat dan informatie samen op een zodanige manier dat dit maximaal de -- voor alle vragen gezamenlijke -- variatie tussen de milieudrukken weergeeft.
@@ -221,7 +221,7 @@ actie26_rang %>%
     spread(key = Scenario, value = Rang) %>% 
     arrange(Scenario_1) %>% 
     pandoc.table(
-      caption = "(\\#tab:eindscores)Rangnummer van milieudrukken, gerangschikt volgens scenario 1.",
+      caption = "(\\#tab:rang)Rangnummer van milieudrukken, gerangschikt volgens scenario 1.",
       split.table = Inf ,
      # split.cells = c(30,50),
      justify = "left"
