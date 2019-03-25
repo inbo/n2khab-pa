@@ -1,6 +1,4 @@
-# (APPENDIX) Bijlagen {-}
-
-# Bijlage: fiches van de milieudrukken
+# Bijlage: fiches van de milieudrukken {#app:fiches}
 
 De lijst met toelichting bij de respectievelijke milieudrukken is leesbaar als [online bijlage](https://docs.google.com/spreadsheets/d/1aVUQWQlaL3k5hjuwyH-8c0lW7hjIkPz8VZbNgyMlN0A/edit?usp=sharing).
 

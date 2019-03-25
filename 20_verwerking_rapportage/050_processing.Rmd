@@ -179,7 +179,7 @@ gewichten %>%
     )
 ```
 
-### Eindscores per scenario
+### Eindrangschikking per scenario
 
 
 ```{r message=FALSE}
@@ -198,22 +198,10 @@ actie26_rang <-
            )
 ```
 
-Tabel \@ref(tab:eindscores) geeft de berekende eindscores weer per scenario (gewogen of ongewogen gemiddelde score per milieudruk).
 Tabel \@ref(tab:rang) geeft een rangnummer weer per milieudruk, voor elk van de scenario's.
+Het betreft de rangschikking op basis van de berekende eindscores per scenario.
+De eindscores zelf zijn opgenomen in bijlage \@ref(app:eindscores) (gewogen of ongewogen gemiddelde score per milieudruk).
 
-
-```{r eindscores, results='asis'}
-actie26_rang %>% 
-    select(-Rang) %>% 
-    spread(key = Scenario, value = Eindscore) %>% 
-    arrange(desc(Scenario_1)) %>% 
-    pandoc.table(
-      caption = "(\\#tab:eindscores)Eindscores van milieudrukken, gerangschikt volgens scenario 1.",
-      split.table = Inf ,
-     # split.cells = c(30,50),
-     justify = "left"
-    )
-```
 
 ```{r rang, results='asis'}
 actie26_rang %>% 
