@@ -250,9 +250,10 @@ actie26_scores_kort %>%
     ggplot(aes(x = Scenario, 
                y = Rang, 
                group = Milieudruk_kort,
-               label = Milieudruk_kort)) +
-    geom_line(aes(colour = Milieudruk_kort)) +
-    geom_text_repel(size = 3, segment.color = "gray50") +
+               label = Milieudruk_kort,
+               colour = Milieudruk_kort)) +
+    geom_line() +
+    geom_text_repel(, size = 3, segment.color = "gray50") +
     scale_y_continuous(trans = "reverse")
 ```
 
