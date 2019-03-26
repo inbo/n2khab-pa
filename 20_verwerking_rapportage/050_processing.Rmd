@@ -335,8 +335,6 @@ actie26_scores_kort %>%
     scale_y_continuous(trans = "reverse")
 ```
 
-_XXXXX Deze figuur is te bespreken als we dit er allemaal in houden. Bv. het zakken van 3.2P en 3.3P en het stijgen van o.a. 7.1, 7.3 en 5.2._
-
 We kunnen voor de hoogst gerangschikte milieudrukken de volgende overeenkomsten en verschillen vaststellen tussen de scenario's:
 
 - helemaal bovenaan gerangschikt vinden we een _ex aequo_ tussen alle scenario's voor atmosferische eutrofiëring (3.1) en verzuring (4.1);
