@@ -241,7 +241,7 @@ Figuur \@ref(fig:dambord) accentueert de sprongen in de rangnummers die optreden
 Figuur \@ref(fig:mikado) toont deze sprongen in een lijngrafiek.
 
 
-```{r dambord, message=FALSE, fig.width=7, fig.height=8, fig.cap="Overeenkomsten en verschillen in het rangnummer van milieudrukken ten opzichte van het ongewogen scenario. De getallen geven het rangnummer van het overeenkomstig scenario. De kleur geeft weer hoezeer het rangnummer verandert (_Rangverschil_) in scenario 1 en 2 t.o.v. het ongewogen scenario."}
+```{r dambord, message=FALSE, fig.width=7, fig.height=8, fig.cap="Overeenkomsten en verschillen in het rangnummer van milieudrukken ten opzichte van het ongewogen scenario. De getallen geven het rangnummer van het overeenkomstig scenario. De kleur geeft weer hoezeer het rangnummer verandert (Rangverschil) in scenario 1 en 2 t.o.v. het ongewogen scenario."}
 mildlevels <-
     actie26_scores_kort %>% 
     select(Milieudruk_kort, Scenario, Rang) %>% 
