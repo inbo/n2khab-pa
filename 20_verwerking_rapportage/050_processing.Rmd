@@ -234,20 +234,6 @@ actie26_scores_kort <-
 
 ### Verschillen en relaties tussen scenario's
 
-```{r mikado, fig.width=7, fig.height=9, fig.cap="Lijngrafiek voor opsporing van overeenkomsten en verschillen in het rangnummer van milieudrukken, volgens de verschillende scenario's."}
-actie26_scores_kort %>% 
-    ggplot(aes(x = Scenario, 
-               y = Rang, 
-               group = Milieudruk_kort,
-               label = Milieudruk_kort,
-               colour = Milieudruk_kort)) +
-    geom_line() +
-    geom_text_repel(, size = 3, segment.color = "gray50") +
-    scale_y_continuous(trans = "reverse")
-```
-
-_XXXXX Deze figuur is te bespreken als we dit er allemaal in houden. Bv. het zakken van 3.2P en 3.3P en het stijgen van o.a. 7.1, 7.3 en 5.2._
-
 We stellen vast dat er -ondanks de wegingen- een sterke relatie bestaat tussen de ongewogen en de gewogen rangschikking (Figuren \@ref(fig:grafiek-eindscores1) en \@ref(fig:grafiek-eindscores2)).
 De rangschikking volgens scenario 1 resulteert in minder _ex aequo_'s tussen milieudrukken dan de overige rangschikkingen, wat een voordeel is.
 Uit de relatie tussen scenario 1 en 2 (Figuur \@ref(fig:grafiek-eindscores12)) zien we inderdaad dat scenario 1 de milieudrukken beter uit elkaar haalt.
@@ -289,6 +275,65 @@ actie26_scores_kort %>%
     geom_text_repel(size = 3, segment.color = "gray50")
 ```
 
+```{r dambord, message=FALSE, fig.width=7, fig.height=8, fig.cap="Overeenkomsten en verschillen in het rangnummer van milieudrukken ten opzichte van het ongewogen scenario. De getallen geven het rangnummer van het overeenkomstig scenario. De kleur geeft weer hoezeer het rangnummer verandert (_Rangverschil_) in scenario 1 en 2 t.o.v. het ongewogen scenario."}
+mildlevels <-
+    actie26_scores_kort %>% 
+    select(Milieudruk_kort, Scenario, Rang) %>% 
+    spread(key = Scenario, value = Rang) %>% 
+    arrange(Ongewogen, Scenario_1) %>% 
+    dplyr::pull(Milieudruk_kort) %>% 
+    rev
+actie26_scores_kort %>% 
+    select(Milieudruk_kort, Scenario, Rang) %>% 
+    inner_join(actie26_scores_kort %>% 
+                   select(Milieudruk_kort, Scenario, Rang) %>% 
+                   filter(Scenario == "Ongewogen") %>% 
+                   select(Milieudruk_kort,
+                          Rang_ongew = Rang)
+               ) %>% 
+    mutate(Rangverschil = Rang_ongew - Rang,
+           Milieudruk_kort = factor(Milieudruk_kort, 
+                                    levels = mildlevels)) %>% 
+    (function(mydata) {
+        ggplot() +
+            geom_tile(data = mydata, aes(x = Scenario, 
+                                         y = Milieudruk_kort, 
+                                         fill = Rangverschil)) +
+            scale_fill_gradient2(low = "#188F5B",
+                                 high = "#EB4040") +
+            theme(
+                axis.text.x = element_text(angle = 90, vjust = 1, hjust = 0),
+                panel.background = element_blank(),
+                legend.key = element_rect(fill = "white", colour = "white")
+            ) +
+            geom_tile(data = expand.grid(X = 1:3, Y = 1:38),
+                      aes(x = X, y = Y),
+                      colour = "grey60",alpha = 0) +
+            geom_text(data = mydata, 
+                      aes(x = Scenario, 
+                          y = Milieudruk_kort, 
+                          label = Rang),
+                      size = 3) +
+            scale_x_discrete(position = "top")
+    })
+```
+
+
+```{r mikado, fig.width=7, fig.height=9, fig.cap="Lijngrafiek ter visualisatie van overeenkomsten en verschillen in het rangnummer van milieudrukken, volgens de verschillende scenario's."}
+actie26_scores_kort %>% 
+    ggplot(aes(x = Scenario, 
+               y = Rang, 
+               group = Milieudruk_kort,
+               label = Milieudruk_kort,
+               colour = Milieudruk_kort)) +
+    geom_line() +
+    geom_text_repel(, size = 3, segment.color = "gray50") +
+    scale_y_continuous(trans = "reverse")
+```
+
+_XXXXX Deze figuur is te bespreken als we dit er allemaal in houden. Bv. het zakken van 3.2P en 3.3P en het stijgen van o.a. 7.1, 7.3 en 5.2._
+
+### Weergave van de eindscore in een PCA-biplot
 
 ```{r pca, message=FALSE}
 actie26_pca <- 
@@ -303,8 +348,6 @@ actie26_pca <-
 actie26_pca %>% 
     ggscreeplot("both")
 ```
-
-### Weergave van de eindscore in een PCA-biplot
 
 De principale-componentenanalyse (PCA) vat de variatie in de set van scores (milieudruk x vraag) samen met principale componenten.
 Het onderstaande resultaat toont dat de eerste drie principale componenten (PC's) ongeveer drie kwart van de variatie verklaren.
