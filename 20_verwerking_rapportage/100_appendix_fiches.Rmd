@@ -2,7 +2,7 @@
 
 De lijst met toelichting bij de respectievelijke milieudrukken is leesbaar als [online bijlage](https://docs.google.com/spreadsheets/d/1aVUQWQlaL3k5hjuwyH-8c0lW7hjIkPz8VZbNgyMlN0A/edit?usp=sharing).
 
-Hieronder worden per milieudruk de scores, bijhorende betrouwbaarheid en de uitleg in fichevorm weergegeven. De online tabel waaruit deze informatie afkomstig is, vindt u [hier](https://docs.google.com/spreadsheets/d/1iaHBHlVNh9Cw35_9DYb0WDxmVJgpOEck_wBcFWVvsfk/edit#gid=320367861).
+Hieronder worden per milieudruk de scores, bijhorende betrouwbaarheid en de uitleg in tabelvorm weergegeven.
 
 Algemene toelichting bij 'score' en 'betrouwbaarheid':
 
