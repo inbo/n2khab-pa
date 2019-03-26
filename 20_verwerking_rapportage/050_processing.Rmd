@@ -275,6 +275,10 @@ actie26_scores_kort %>%
     geom_text_repel(size = 3, segment.color = "gray50")
 ```
 
+Figuur \@ref(fig:dambord) accentueert de sprongen in de rangnummers die optreden in Tabel \@ref(tab:rang).
+Figuur \@ref(fig:mikado) toont deze sprongen in een lijngrafiek.
+
+
 ```{r dambord, message=FALSE, fig.width=7, fig.height=8, fig.cap="Overeenkomsten en verschillen in het rangnummer van milieudrukken ten opzichte van het ongewogen scenario. De getallen geven het rangnummer van het overeenkomstig scenario. De kleur geeft weer hoezeer het rangnummer verandert (_Rangverschil_) in scenario 1 en 2 t.o.v. het ongewogen scenario."}
 mildlevels <-
     actie26_scores_kort %>% 
@@ -332,6 +336,31 @@ actie26_scores_kort %>%
 ```
 
 _XXXXX Deze figuur is te bespreken als we dit er allemaal in houden. Bv. het zakken van 3.2P en 3.3P en het stijgen van o.a. 7.1, 7.3 en 5.2._
+
+We kunnen voor de hoogst gerangschikte milieudrukken de volgende overeenkomsten en verschillen vaststellen tussen de scenario's:
+
+- helemaal bovenaan gerangschikt vinden we een _ex aequo_ tussen alle scenario's voor atmosferische eutrofiëring (3.1) en verzuring (4.1);
+- dit wordt meteen gevolgd door verdroging via het grondwater (5.1): opnieuw een _ex aequo_;
+- de eutrofiëringsdrukken (3.x) situeren zich in alle gevallen hoog in de rangschikking;
+    - alleen de fosforeutrofiëringsdrukken (3.2P, 3.3P) worden in scenario 2 duidelijk lager geplaatst;
+    - na eutrofiëring via de lucht is het de eutrofiëring via het oppervlaktewater (3.4N, 3.4P), die gelijk scoort in scenario's 1 en 2;
+    - stikstofeutrofiëring via de bodem (3.2N) scoort in scenario 2 duidelijk hoger dan in scenario 1. De rangschikking is echter gelijkend voor stikstofeutrofiëring via het grondwater (3.3N);
+- eveneens hoog op de ranglijst (tussen de eutrofiëringsdrukken) staan:
+    - 101 en 102: klimaatverandering in droge resp. natte perioden;
+    - 11: aanpassing van de fysische structuur naar een blijvende nieuwe toestand (bodemcompactie, verharding, herprofilering, nieuw substraat, grondverzet, …);
+    - 15: verlies van terrestrische connectiviteit (in scenario 2 lager gerangschikt);
+    - 103: zeespiegelstijging door klimaatverandering, vooral hoger gescoord in scenario 2.
+    
+Andere opvallende overeenkomsten en verschillen zijn:
+
+- de hydrologische milieudrukken 61 tot 64 bevinden zich min of meer halverwege, maar vertonen duidelijke, milieudrukafhankelijke verschillen tussen scenario's. Milieudrukken 61 en 64 zijn het hoogste gerangschikt;
+- milieudruk 14 (verlies van aquatische connectiviteit) staat op plaats 15 voor alle scenario's;
+- milieudrukken 7.1 en 7.3 (verzoeting resp. verzilting via het grondwater) worden in scenario 2 veel hoger geplaatst;
+- verontreiniging via de lucht (8.1) en via het oppervlaktewater (8.4) scoren hoger dan de andere verontreinigingsdrukken;
+- milieudrukken i.v.m. bodemdynamiek (12, 13) en verontreiniging via het grondwater (8.3) worden in scenario 2 veel geplaatst;
+- vernatting via het grondwater (5.2) staat laag op de ranglijst voor het ongewogen scenario en scenario 1, maar heel wat hoger in scenario 2.
+
+
 
 ### Weergave van de eindscore in een PCA-biplot
 
