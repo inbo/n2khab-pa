@@ -1,3 +1,37 @@
-# (APPENDIX) Bijlagen {-}
+# Bijlage: fiches van de milieudrukken {#app:fiches}
 
-# Bijlage: fiches van de milieudrukken
+De lijst met toelichting bij de respectievelijke milieudrukken is leesbaar als [online bijlage](https://docs.google.com/spreadsheets/d/1aVUQWQlaL3k5hjuwyH-8c0lW7hjIkPz8VZbNgyMlN0A/edit?usp=sharing).
+
+Hieronder worden per milieudruk de scores, bijhorende betrouwbaarheid en de uitleg in tabelvorm weergegeven.
+
+Algemene toelichting bij 'score' en 'betrouwbaarheid':
+
+- de scores (per milieudruk x vraag) gaan van 0 tot 3.
+Score 3 bij een vraag betekent dat de milieudruk in kwestie volgens dit criterium alleszins in aanmerking zou komen voor een programmatische aanpak.
+Score 0 betekent het tegenovergestelde en scores 1 en 2 zijn tussenliggende niveaus;
+- de betrouwbaarheden (per milieudruk x vraag) gaan eveneens van 0 tot 3.
+In de praktijk is er geen waarde '0' gegeven.
+Waarde 3 betekent bij een vraag betekent dat de experten voor de milieudruk in kwestie een voldoende grote kennis hebben om de score en de uitleg bij het criterium als 'betrouwbaar' te kunnen beschouwen.
+Waarde 0 betekent het tegenovergestelde en waarden 1 en 2 zijn tussenliggende niveaus.
+
+\blandscape
+
+```{r results="asis", warning=FALSE, message=FALSE}
+actie26_wide <- 
+    actie26 %>% 
+    spread(key = Antwoordtype, value = Waarde)
+for (druk in levels(actie26_wide$Milieudruk)) {
+    cat(str_c("## ", druk, " {.unnumbered}\n\n"))
+    actie26_wide %>% 
+        filter(Milieudruk == druk) %>% 
+        arrange(Vraag) %>% 
+        select(Vraag, Score, Betrouwbaarheid, Uitleg) %>% 
+        pandoc.table(justify = "left", 
+                     split.tables = Inf,
+                     split.cells = c(15,10,10,60)
+)
+    cat("\n\n")
+}
+```
+
+\elandscape
