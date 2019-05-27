@@ -107,6 +107,18 @@ actie26 %>%
     labs(y = "Aantal milieudrukken", fill = "Betrouwbaarheid")
 ```
 
+Tabel \@ref(tab:aantbetrouw) geeft aan dat maar voor een beperkt aantal milieudrukken meer dan één vraag als minder betrouwbaar is beschouwd.
+
+```{r aantbetrouw}
+actie26 %>% 
+    filter(Antwoordtype == "Betrouwbaarheid",
+           Waarde %in% c("0", "1")) %>% 
+    count(Milieudruk) %>% 
+    rename(Aantal_vragen = n) %>% 
+    arrange(desc(Aantal_vragen)) %>% 
+    kable(caption = "Het aantal vragen per milieudruk met een lage betrouwbaarheid (0 of 1). Aflopend gerangschikt volgens aantal vragen. Alleen milieudrukken met minstens één dergelijk geval zijn weergegeven.")
+```
+
 
 ### Correlatie tussen scores
 
