@@ -1,4 +1,5 @@
 ..generic:
+  git2rdata: 0.0.4
   optimize: yes
   NA string: NA
   sorting:
@@ -6,6 +7,7 @@
   - Vraag
   - Antwoordtype
   hash: 026c5daf6b60e893c4feda036fdd08fcb29846a8
+  data_hash: c6a00bdfa4a0ba8f4c589249b0daf855c659d211
 Milieudruk:
   class: factor
   labels:
