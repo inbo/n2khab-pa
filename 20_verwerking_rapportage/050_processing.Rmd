@@ -5,6 +5,8 @@
 ### Spreiding van de scores per vraag
 
 ```{r message=FALSE, eval=FALSE}
+# the first time, run:
+# gs_auth()
 actie26_sheet <- gs_key("1iaHBHlVNh9Cw35_9DYb0WDxmVJgpOEck_wBcFWVvsfk")
 tab_colnames <- 
     actie26_sheet %>% 

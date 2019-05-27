@@ -59,6 +59,8 @@ opts_chunk$set(
 Opbouw van de googlesheet:
 
 ```{r message=FALSE}
+# the first time, run:
+# gs_auth()
 input_sheet <- gs_key("1CrDuq3ZX0uhh1qPGintIlpb6xlyeNTktPcsXTfBRMkI")
 tabs <- 
     gs_ws_ls(input_sheet) %>% 
