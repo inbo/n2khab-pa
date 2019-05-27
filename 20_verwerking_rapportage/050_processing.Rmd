@@ -5,6 +5,8 @@
 ### Spreiding van de scores per vraag
 
 ```{r message=FALSE, eval=FALSE}
+# the first time, run:
+# gs_auth()
 actie26_sheet <- gs_key("1iaHBHlVNh9Cw35_9DYb0WDxmVJgpOEck_wBcFWVvsfk")
 tab_colnames <- 
     actie26_sheet %>% 
@@ -105,6 +107,18 @@ actie26 %>%
     scale_fill_manual(values = c("tomato", "orange", "springgreen4")) +
     coord_flip() +
     labs(y = "Aantal milieudrukken", fill = "Betrouwbaarheid")
+```
+
+Tabel \@ref(tab:aantbetrouw) geeft aan dat maar voor een beperkt aantal milieudrukken meer dan één vraag als minder betrouwbaar is beschouwd.
+
+```{r aantbetrouw}
+actie26 %>% 
+    filter(Antwoordtype == "Betrouwbaarheid",
+           Waarde %in% c("0", "1")) %>% 
+    count(Milieudruk) %>% 
+    rename(Aantal_vragen = n) %>% 
+    arrange(desc(Aantal_vragen)) %>% 
+    kable(caption = "Het aantal vragen per milieudruk met een lage betrouwbaarheid (0 of 1). Aflopend gerangschikt volgens aantal vragen. Alleen milieudrukken met minstens één dergelijk geval zijn weergegeven.")
 ```
 
 
