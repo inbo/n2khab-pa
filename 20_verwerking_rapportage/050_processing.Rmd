@@ -223,6 +223,7 @@ actie26_scores_kort %>%
     ggplot(aes(x = Ongewogen, 
                y = Scenario_1, 
                label = Milieudruk_kort)) +
+    geom_abline(slope = 1, color = "grey60", linetype = "dashed") +
     geom_point(size = 3, shape = 21, fill = "springgreen4") +
     geom_text_repel(size = 3, segment.color = "gray50")
 ```
@@ -235,6 +236,7 @@ actie26_scores_kort %>%
     ggplot(aes(x = Ongewogen, 
                y = Scenario_2, 
                label = Milieudruk_kort)) +
+    geom_abline(slope = 1, color = "grey60", linetype = "dashed") +
     geom_point(size = 3, shape = 21, fill = "springgreen4") +
     geom_text_repel(size = 3, segment.color = "gray50")
 ```
@@ -247,6 +249,7 @@ actie26_scores_kort %>%
     ggplot(aes(x = Scenario_1, 
                y = Scenario_2, 
                label = Milieudruk_kort)) +
+    geom_abline(slope = 1, color = "grey60", linetype = "dashed") +
     geom_point(size = 3, shape = 21, fill = "springgreen4") +
     geom_text_repel(size = 3, segment.color = "gray50")
 ```
