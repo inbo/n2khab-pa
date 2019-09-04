@@ -5,7 +5,7 @@ for 'action 26' of the Flemish Natura 2000 Programme 2016-2020.
 
 The content is typically in Dutch.
 
-### Beware of LFS (large file storage)
+### Developer's note: beware of LFS (large file storage)
 
 This repo also keeps track of the versions of at least one binary report file (large html-file with binary content).
 To this aim, [Git LFS](https://git-lfs.github.com/) is being used, in order not to put weight on the git repository itself, regarding diff calculations and such.
