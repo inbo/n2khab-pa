@@ -5,6 +5,8 @@ for 'action 26' of the Flemish Natura 2000 Programme 2016-2020.
 
 The content is typically in Dutch.
 
+The report in which the results were incorporated, can be found [here](https://doi.org/10.21436/inbor.16591811).
+
 ### Developer's note: beware of LFS (large file storage)
 
 This repo also keeps track of the versions of at least one binary report file (large html-file with binary content).
